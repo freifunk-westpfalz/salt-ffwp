@@ -33,6 +33,7 @@ install common packages:
       - mosh
       - conntrack
       - bridge-utils
+      - ethtool
 
 Install latest stable (or backports) Kernel:
   pkg.latest:
