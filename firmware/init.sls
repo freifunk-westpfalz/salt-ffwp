@@ -31,6 +31,7 @@ create log directory:
     - makedirs: True
 
 crontab gluon:
-  - hour: 1
-  - minute: 14
-  - name:  /home/gluon/gluon/site/start-build.sh > /home/freifunk/.ffwp/log/nightly_build.log 2>&1
+  cron.present:
+    - hour: 1
+    - minute: 14
+    - name:  /home/gluon/gluon/site/start-build.sh > /home/freifunk/.ffwp/log/nightly_build.log 2>&1
