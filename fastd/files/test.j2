@@ -1,0 +1,12 @@
+MTU: {{ mtu }}
+Port {{ port }}
+
+{{ instance.name }}
+
+
+Anderer Foo
+{% for instance in pillar['fastd']['minions'][grains['id']] %}
+{{ instance.name }}
+{{ instance.mtu }}
+
+{% endfor %}

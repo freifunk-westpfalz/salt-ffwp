@@ -1,0 +1,50 @@
+log to syslog level verbose;
+hide ip addresses yes;
+hide mac addresses yes;
+
+interface "fastd_{{ name }}";
+
+method "aes128-ctr+umac";
+method "salsa2012+umac";
+method "null+salsa2012+umac";
+
+include "/etc/fastd/secret.conf";
+mtu {{ mtu }};
+mode tap;
+#include peers from "peers";
+
+{% if peer_limit is defined %}
+peer limit {{ peer_limit }};
+{% endif -%}
+
+{% if mtu == 1406 %}
+peer "gw01" {
+	key "92d472795ccedfc578db63c920bddacb8a5dc2f9d3dff17703ddbc7b980478a7";
+	remote "gw01.freifunk-westpfalz.de" port 10000;
+}
+peer "gw02" {
+	key "444c83f025e98971a02502acc681fd8139c13ad5bf404eb0a88861f2509a3404";
+	remote "gw02.freifunk-westpfalz.de" port 10000;
+}
+peer "gw03" {
+	key "23650e3c34c2f7d27f8d4208a8800161b5ebb64e523bce99fbf9476217297299";
+	remote "gw03.freifunk-westpfalz.de" port 10000;
+}
+peer "gw04" {
+	key "c6a0f97f831a94b05a104b98274c1e8c44046e2b0be5d7d7b152a0f195d2ca8c";
+	remote "gw04.freifunk-westpfalz.de" port 10001;
+}
+{% endif %}
+
+on verify "true";
+on up "
+    ip link set address {{ mac }} up dev $INTERFACE
+    ip link set up dev bat0
+		batctl -m bat0 if add $INTERFACE
+    brctl addif br_ffwp bat0
+";
+
+on down "
+    batctl -m bat0 if del $INTERFACE
+		brctl delif br_ffwp bat0
+";
