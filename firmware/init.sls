@@ -21,7 +21,6 @@ install gluon dependencies:
       - libncurses5-dev
       - zlib1g-dev
       - libssl-dev
-      - ecdsautils
 
 create log directory:
   file.directory:
