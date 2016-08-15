@@ -22,6 +22,11 @@ install gluon dependencies:
       - zlib1g-dev
       - libssl-dev
 
+install ecdsautils:
+  pkg.latest:
+    - name: ecdsautils
+    - fromrepo: jessie-backports
+
 create log directory:
   file.directory:
     - name: /home/freifunk/.ffwp/log/

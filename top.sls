@@ -8,3 +8,4 @@ base:
     - common.unwanted
     - sysctl.forwarding
     - ssh.keys
+    - ssh.config
