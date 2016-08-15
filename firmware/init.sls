@@ -8,7 +8,7 @@ clone ffwp site:
   git.latest:
     - user: freifunk
     - name: https://github.com/freifunk-westpfalz/site-ffwp.git
-    - target: /home/freifunk/site
+    - target: /home/freifunk/gluon/site
 
 install gluon dependencies:
   pkg.latest:
@@ -31,6 +31,7 @@ create log directory:
 
 crontab gluon:
   cron.present:
+    - user: freifunk
     - hour: 1
     - minute: 14
     - name:  /home/gluon/gluon/site/start-build.sh > /home/freifunk/.ffwp/log/nightly_build.log 2>&1
