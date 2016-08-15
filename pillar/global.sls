@@ -1,4 +1,4 @@
 minions:
   firmware01.freifunk-westpfalz.de:
-    backports_kernel: false
+    backports_kernel: true
     ssh_port: 22102
