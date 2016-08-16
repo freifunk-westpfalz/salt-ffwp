@@ -6,6 +6,11 @@ base:
     - apt.bird
     - common.packages
     - common.unwanted
-    - sysctl.forwarding
+    - common.userfreifunk
     - ssh.keys
     - ssh.config
+  'firmware*':
+    - firmware
+  'gw*':
+    - sysctl.forwarding
+    - fastd
