@@ -12,6 +12,13 @@ clone FFWP git repos:
       - https://github.com/freifunk-westpfalz/config-ffwp.git:
         - target: /home/freifunk/config-ffwp
 
+create .ffwp directory:
+  file.directory:
+    - name: /home/freifunk/.ffwp/
+    - user: freifunk
+    - group: freifunk
+    - makedirs: True
+
 {% set minionid = grains['id'] %}
 set git name for user freifunk:
   git.config_set:
