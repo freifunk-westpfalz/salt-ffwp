@@ -1,11 +1,11 @@
 clone gluon:
-  git.present:
+  git.latest:
     - user: freifunk
     - name: https://github.com/freifunk-gluon/gluon.git
     - target: /home/freifunk/gluon
 
 clone ffwp site:
-  git.present:
+  git.latest:
     - user: freifunk
     - name: https://github.com/freifunk-westpfalz/site-ffwp.git
     - target: /home/freifunk/gluon/site
