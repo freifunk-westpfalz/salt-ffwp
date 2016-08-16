@@ -29,7 +29,7 @@ install ecdsautils:
 
 create log directory:
   file.directory:
-    - name: /home/freifunk/.ffwp/log/
+    - name: /home/freifunk/.ffwp/fw/log/
     - user: freifunk
     - group: freifunk
     - makedirs: True
