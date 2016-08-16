@@ -1,6 +1,6 @@
 include:
   - common.userfreifunk
-  
+
 add Adminteam SSH keys for user root:
   ssh_auth.present:
     - user: root
@@ -12,3 +12,8 @@ add Adminteam SSH keys for user freifunk:
     - source: salt://ssh/files/adminteam.pub
     - require:
       - user: create user freifunk
+
+remove password from user freifunk:
+  user.present:
+    - name: freifunk
+    - empty_password: True
