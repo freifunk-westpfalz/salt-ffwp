@@ -8,7 +8,7 @@ method "aes128-ctr+umac";
 method "salsa2012+umac";
 method "null+salsa2012+umac";
 
-include "/etc/fastd/secret.conf";
+secret "{{ secret }}";
 mtu {{ mtu }};
 mode tap;
 #include peers from "peers";

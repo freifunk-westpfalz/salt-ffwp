@@ -16,7 +16,7 @@ bind {{ ipaddr }}:{{ port }};
 {%- if not ipaddr.startswith('fe80') %}bind [{{ ipaddr }}]:{{ port }};{% endif %}
 {%- endfor %}
 
-include "/etc/fastd/secret.conf";
+secret "{{ secret }}";
 mtu {{ mtu }};
 mode tap;
 
