@@ -41,4 +41,11 @@ Fastd template instance {{ instance.name }}:
         peer_limit: {{ instance.peer_limit }}
         {% endif %}
         {% endif %}
+
+enable/run systemd instance {{ instance.name }}:
+  service.running:
+    - name: fastd@{{ instance.name }}
+    - enable: true
+    - watch:
+      - file: /etc/fastd/{{ instance.name }}/fastd.conf
 {% endfor %}
