@@ -40,3 +40,23 @@ crontab gluon:
     - hour: 1
     - minute: 14
     - name:  /home/gluon/gluon/site/start-build.sh > /home/freifunk/.ffwp/log/nightly_build.log 2>&1
+
+{% set minionid = grains['id'] %}
+
+copy secret:
+  file.managed:
+    - name: /home/freifunk/.ffwp/fw/autobuilder.secret
+    - makedirs: true
+    - user: freifunk
+    - group: freifunk
+    - mode: 660
+    - contents_pillar: firmware:minions:{{ minionid }}:secret_key
+
+copy public:
+  file.managed:
+    - name: /home/freifunk/.ffwp/fw/autobuilder.pub
+    - makedirs: true
+    - user: freifunk
+    - group: freifunk
+    - mode: 660
+    - contents_pillar: firmware:minions:{{ minionid }}:public_key
