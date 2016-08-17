@@ -34,6 +34,7 @@ Fastd template instance {{ instance.name }}:
         name: "{{ instance.name }}"
         mtu: {{ instance.mtu }}
         mac: {{ instance.mac }}
+        secret: {{ instance.secret }}
         {% if instance.type == "server"%}
         port: {{ instance.port }}
         {% if instance.peer_limit is defined %}
