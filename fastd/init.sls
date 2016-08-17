@@ -31,7 +31,7 @@ Fastd template instance {{ instance.name }}:
     {% endif %}
     - template: jinja
     - context:
-        name: {{ instance.name }}
+        name: "{{ instance.name }}"
         mtu: {{ instance.mtu }}
         mac: {{ instance.mac }}
         {% if instance.type == "server"%}
