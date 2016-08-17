@@ -32,7 +32,6 @@ peer "gw04" {
 }
 {% endif %}
 
-on verify "true";
 on up "
     ip link set address {{ mac }} up dev $INTERFACE
     ip link set up dev bat0
