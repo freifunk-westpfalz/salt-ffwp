@@ -43,7 +43,7 @@ crontab gluon:
 
 {% set minionid = grains['id'] %}
 
-copy secret:
+copy firmware autobuilder secret key:
   file.managed:
     - name: /home/freifunk/.ffwp/fw/autobuilder.secret
     - makedirs: true
@@ -52,7 +52,7 @@ copy secret:
     - mode: 660
     - contents_pillar: firmware:minions:{{ minionid }}:secret_key
 
-copy public:
+copy firmware autobuilder public key:
   file.managed:
     - name: /home/freifunk/.ffwp/fw/autobuilder.pub
     - makedirs: true
