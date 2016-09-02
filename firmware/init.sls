@@ -39,7 +39,7 @@ crontab gluon:
     - user: freifunk
     - hour: 1
     - minute: 14
-    - name:  /home/gluon/gluon/site/start-build.sh > /home/freifunk/.ffwp/log/nightly_build.log 2>&1
+    - name:  (cd /home/freifunk/gluon/site && /home/freifunk/gluon/site/start-build.sh > /home/freifunk/.ffwp/log/nightly_build.log 2>&1)
 
 {% set minionid = grains['id'] %}
 
