@@ -36,6 +36,7 @@ create log directory:
 
 crontab gluon:
   cron.present:
+    - identifier: nightly_build_cron
     - user: freifunk
     - hour: 0
     - minute: 12
