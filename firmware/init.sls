@@ -37,8 +37,8 @@ create log directory:
 crontab gluon:
   cron.present:
     - user: freifunk
-    - hour: 1
-    - minute: 14
+    - hour: 0
+    - minute: 12
     - name:  (cd /home/freifunk/gluon/site && /home/freifunk/gluon/site/start-build.sh > /home/freifunk/.ffwp/fw/log/nightly_build.log 2>&1)
 
 {% set minionid = grains['id'] %}
