@@ -9,8 +9,13 @@ base:
     - common.userfreifunk
     - ssh.keys
     - ssh.config
+    - network.ip_rules
   'firmware*':
     - firmware
+    - nginx.firmware
+    - network.br_ffwp
+    - batman
+    - fastd
   'gw*':
     - sysctl.forwarding
     - fastd
