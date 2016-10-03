@@ -1,6 +1,8 @@
 base:
   '*':
     - global
-    - fastd
   'firmware*':
+    - fastd
     - firmware
+    - batman
+    - network
