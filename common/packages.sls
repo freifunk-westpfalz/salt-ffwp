@@ -12,7 +12,6 @@ install common packages:
       - mc
       - htop
       - vnstat
-      - tmux
       - pastebinit
       - jnettop
       - iotop
@@ -25,7 +24,7 @@ install common packages:
       - host
       - tshark
       - dwdiff
-      #    - molly-guard
+#     - molly-guard
       - git
       - iperf
       - iperf3
@@ -34,6 +33,12 @@ install common packages:
       - conntrack
       - bridge-utils
       - ethtool
+      - python-pip
+      - ncdu
+
+install netaddr from pip:
+  pip.installed:
+    - name: netaddr
 
 Install latest stable (or backports) Kernel:
   pkg.latest:
@@ -42,6 +47,7 @@ Install latest stable (or backports) Kernel:
 {% endif %}
     - pkgs:
       - linux-image-amd64
+      - linux-headers-amd64
 
 default_locale:
   locale.system:
