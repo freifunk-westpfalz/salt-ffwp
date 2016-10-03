@@ -1,0 +1,44 @@
+{# ToDo: auslagern und includen #}
+{% macro address(input) -%}
+    {{ salt['netaddr.address'](input) }}
+{%- endmacro -%}
+{% macro netmask(input) -%}
+    {{ salt['netaddr.netmask'](input) }}
+{%- endmacro -%}
+{% macro prefix(input) -%}
+    {{ salt['netaddr.prefix'](input) }}
+{%- endmacro -%}
+{% macro net(input) -%}
+    {{ salt['netaddr.net'](input) }}
+{%- endmacro -%}
+{% macro cidr(input) -%}
+    {{ salt['netaddr.cidr'](input) }}
+{%- endmacro -%}
+
+{% set v6_ula_prefix = salt['pillar.get']('ffwp:v6_ula_prefix') -%}
+{% set v6_public_prefix = salt['pillar.get']('ffwp:v6_public_prefix') -%}
+{% set v6_suffix = salt['pillar.get']('network:'~grains['id']~':br_ffwp:v6_suffix') -%}
+{% set v4_network = salt['pillar.get']('network:'~grains['id']~':br_ffwp:v4_network') -%}
+{% if salt['pillar.get']('network:'~grains['id']~':br_ffwp:v6_extra') is defined -%}
+{% set v6_extra = salt['pillar.get']('network:'~grains['id']~':br_ffwp:v6_extra') -%}
+{% endif -%}
+{% set batman_mac = salt['pillar.get']('batman:minions:'~grains['id']~':mac') -%}
+
+auto br_ffwp
+iface br_ffwp inet6 static
+        bridge-ports none
+        address  {{ address([v6_ula_prefix, v6_suffix] | join) }}
+        netmask  {{ prefix([v6_ula_prefix, v6_suffix] | join) }}
+        post-up ip -6 address add {{ cidr([v6_public_prefix, v6_suffix] | join) }} dev $IFACE
+        post-down ip -6 address del {{ cidr([v6_public_prefix, v6_suffix] | join) }} dev $IFACE
+        {% if v6_extra is defined -%}
+        post-up ip -6 address add {{ address(v6_extra) }} dev $IFACE
+        post-down ip -6 address del {{ address(v6_extra) }} dev $IFACE
+        {% endif %}
+
+iface br_ffwp inet static
+        address {{address(v4_network)}}
+        netmask {{netmask(v4_network)}}
+        post-up brctl addif $IFACE bat0
+        post-up ip link set $IFACE address {{ batman_mac }}
+        pre-down brctl delif $IFACE bat0
