@@ -33,13 +33,12 @@ peer "gw04" {
 {% endif %}
 
 on up "
-    ip link set address {{ mac }} up dev $INTERFACE
-    ip link set up dev bat0
-		batctl -m bat0 if add $INTERFACE
-    brctl addif br_ffwp bat0
+	batctl -m bat0 if add $INTERFACE
+	ip link set $INTERFACE up
+	ip link set $INTERFACE address {{ mac }}
+	#ip link set bat0 up
 ";
 
 on down "
-    batctl -m bat0 if del $INTERFACE
-		brctl delif br_ffwp bat0
+	batctl -m bat0 if del $INTERFACE
 ";
