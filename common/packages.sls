@@ -35,6 +35,7 @@ install common packages:
       - ethtool
       - python-pip
       - ncdu
+      - ntp
 
 install netaddr from pip:
   pip.installed:
