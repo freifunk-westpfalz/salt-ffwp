@@ -4,6 +4,7 @@ base:
     - apt.debian
     - apt.freifunk
     - apt.bird
+    - apt.icinga2
     - common.packages
     - common.unwanted
     - common.userfreifunk
