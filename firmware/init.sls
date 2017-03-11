@@ -10,6 +10,26 @@ clone ffwp site:
     - name: https://github.com/freifunk-westpfalz/site-ffwp.git
     - target: /home/freifunk/gluon/site
 
+create /sry/gluon-firmware-wizard:
+  file.directory:
+    - name: /srv/gluon-firmware-wizard
+    - user: freifunk
+    - group: freifunk
+    - makedirs: True
+
+
+clone FFDA gluon-firmware-wizard:
+  git.latest:
+    - user: freifunk
+    - name: https://github.com/freifunk-darmstadt/gluon-firmware-wizard
+    - target: /srv/gluon-firmware-wizardP
+
+gluon-firmware-wizard ffwp-config:
+  file.managed:
+    - user: freifunk
+    - name: /srv/gluon-firmware-wizard/config.js
+    - source: salt://firmware/files/config.js
+
 install gluon dependencies:
   pkg.latest:
     - pkgs:
