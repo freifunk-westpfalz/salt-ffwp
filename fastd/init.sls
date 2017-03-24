@@ -13,8 +13,8 @@ copy Fastd Blacklist:
     - mode: 700
     - source: salt://fastd/files/fastd-blacklist.sh
 
-{% set minionid = grains['id'] %}
-{% for instance in pillar['fastd']['minions'][minionid]  %}
+
+{% for instance in pillar['fastd'] %}
 
 Fastd template instance {{ instance.name }}:
   file.managed:

@@ -19,10 +19,9 @@ create .ffwp directory:
     - group: freifunk
     - makedirs: True
 
-{% set minionid = grains['id'] %}
 set git name for user freifunk:
   git.config_set:
     - name: user.name
-    - value: {{ pillar['minions'][minionid]['git_name'] }}
+    - value: {{ pillar['git_name'] }}
     - user: freifunk
     - global: true

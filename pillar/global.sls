@@ -1,19 +1,3 @@
-minions:
-  salt.freifunk-westpfalz.de:
-    backports_kernel: false
-    ssh_port: 22102
-    git_name: saltmaster
-
-  firmware01.freifunk-westpfalz.de:
-    backports_kernel: true
-    ssh_port: 22151
-    git_name: firmware01
-
-  web00.freifunk-westpfalz.de:
-    backports_kernel: false
-    ssh_port: 22200
-    git_name: web00-fr01
-
 ffwp:
   as_number: 65242
   v4_network: 10.198.0.0/16

@@ -19,4 +19,4 @@ base:
     - fastd
   'gw*':
     - sysctl.forwarding
-    - fastd
+#    - fastd

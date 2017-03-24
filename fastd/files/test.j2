@@ -5,7 +5,7 @@ Port {{ port }}
 
 
 Anderer Foo
-{% for instance in pillar['fastd']['minions'][grains['id']] %}
+{% for instance in pillar['fastd'] %}
 {{ instance.name }}
 {{ instance.mtu }}
 

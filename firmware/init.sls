@@ -1,8 +1,10 @@
-clone gluon:
+{% if salt['file.directory_exists']('/home/freifunk/gluon') == False %}
+inital clone gluon:
   git.latest:
     - user: freifunk
     - name: https://github.com/freifunk-gluon/gluon.git
     - target: /home/freifunk/gluon
+{% endif %}
 
 clone ffwp site:
   git.latest:
@@ -10,23 +12,23 @@ clone ffwp site:
     - name: https://github.com/freifunk-westpfalz/site-ffwp.git
     - target: /home/freifunk/gluon/site
 
-create /sry/gluon-firmware-wizard:
+create /srv/gluon-firmware-wizard:
   file.directory:
     - name: /srv/gluon-firmware-wizard
     - user: freifunk
     - group: freifunk
     - makedirs: True
 
-
 clone FFDA gluon-firmware-wizard:
   git.latest:
     - user: freifunk
     - name: https://github.com/freifunk-darmstadt/gluon-firmware-wizard
-    - target: /srv/gluon-firmware-wizardP
+    - target: /srv/gluon-firmware-wizard
 
 gluon-firmware-wizard ffwp-config:
   file.managed:
     - user: freifunk
+    - name: www-data
     - name: /srv/gluon-firmware-wizard/config.js
     - source: salt://firmware/files/config.js
 
@@ -62,8 +64,6 @@ crontab gluon:
     - minute: 12
     - name:  (cd /home/freifunk/gluon/site && /home/freifunk/gluon/site/start-build.sh > /home/freifunk/.ffwp/fw/log/nightly_build.log 2>&1)
 
-{% set minionid = grains['id'] %}
-
 copy firmware autobuilder secret key:
   file.managed:
     - name: /home/freifunk/.ffwp/fw/autobuilder.secret
@@ -71,7 +71,7 @@ copy firmware autobuilder secret key:
     - user: freifunk
     - group: freifunk
     - mode: 660
-    - contents_pillar: firmware:minions:{{ minionid }}:secret_key
+    - contents_pillar: firmware:secret_key
 
 copy firmware autobuilder public key:
   file.managed:
@@ -80,4 +80,4 @@ copy firmware autobuilder public key:
     - user: freifunk
     - group: freifunk
     - mode: 660
-    - contents_pillar: firmware:minions:{{ minionid }}:public_key
+    - contents_pillar: firmware:public_key

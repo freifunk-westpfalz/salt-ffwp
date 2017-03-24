@@ -6,7 +6,7 @@ install batman-adv-dkms and batctl:
 
 install batadv-vis:
   pkg.installed:
-    - pkgs:      
+    - pkgs:
       - batadv-vis: 2014.3.0-11
 
 # The ff_fix_batman script ensures that the preferred (currently older) version
@@ -48,7 +48,6 @@ place /etc/modules-load.d/batman-adv.conf:
       - name: /etc/modules-load.d/batman-adv.conf
       - source: salt://batman/files/batman-adv.module.conf
 
-{% set minionid = grains['id'] %}
 batman network interface:
   file.managed:
     - name: /etc/network/interfaces.d/batman.cfg

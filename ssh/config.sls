@@ -6,7 +6,7 @@ replace sshd config:
     - source: salt://ssh/files/sshd_config.j2
     - template: jinja
     - context:
-        port: {{ pillar['minions'][minionid]['ssh_port'] }}
+        port: {{ pillar['ssh_port'] }}
 
 openssh service:
    service.running:

@@ -11,7 +11,6 @@ install common packages:
       - curl
       - mc
       - htop
-      - vnstat
       - pastebinit
       - jnettop
       - iotop
@@ -49,7 +48,7 @@ install netaddr from pip:
 
 Install latest stable (or backports) Kernel:
   pkg.latest:
-{% if grains['osfinger'] == "Debian-8" and salt['pillar.get']('minions:'~grains['id']~':backports_kernel') == true %}
+{% if grains['osfinger'] == "Debian-8" and salt['pillar.get']('backports_kernel') == true %}
     - fromrepo: jessie-backports
 {% endif %}
     - pkgs:

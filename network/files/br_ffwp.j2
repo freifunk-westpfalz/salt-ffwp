@@ -17,12 +17,12 @@
 
 {% set v6_ula_prefix = salt['pillar.get']('ffwp:v6_ula_prefix') -%}
 {% set v6_public_prefix = salt['pillar.get']('ffwp:v6_public_prefix') -%}
-{% set v6_suffix = salt['pillar.get']('network:'~grains['id']~':br_ffwp:v6_suffix') -%}
-{% set v4_network = salt['pillar.get']('network:'~grains['id']~':br_ffwp:v4_network') -%}
-{% if salt['pillar.get']('network:'~grains['id']~':br_ffwp:v6_extra') is defined -%}
-{% set v6_extra = salt['pillar.get']('network:'~grains['id']~':br_ffwp:v6_extra') -%}
+{% set v6_suffix = salt['pillar.get']('network:br_ffwp:v6_suffix') -%}
+{% set v4_network = salt['pillar.get']('network:br_ffwp:v4_network') -%}
+{% if salt['pillar.get']('network:br_ffwp:v6_extra') is defined -%}
+{% set v6_extra = salt['pillar.get']('network:br_ffwp:v6_extra') -%}
 {% endif -%}
-{% set batman_mac = salt['pillar.get']('batman:minions:'~grains['id']~':mac') -%}
+{% set batman_mac = salt['pillar.get']('batman:mac') -%}
 
 auto br_ffwp
 iface br_ffwp inet6 static
