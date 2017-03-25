@@ -19,7 +19,7 @@
 {% set v6_public_prefix = salt['pillar.get']('ffwp:v6_public_prefix') -%}
 {% set v6_suffix = salt['pillar.get']('network:br_ffwp:v6_suffix') -%}
 {% set v4_network = salt['pillar.get']('network:br_ffwp:v4_network') -%}
-{% if salt['pillar.get']('network:br_ffwp:v6_extra') is defined -%}
+{% if pillar['network']['br_ffwp']['v6_extra'] is defined -%}
 {% set v6_extra = salt['pillar.get']('network:br_ffwp:v6_extra') -%}
 {% endif -%}
 {% set batman_mac = salt['pillar.get']('batman:mac') -%}

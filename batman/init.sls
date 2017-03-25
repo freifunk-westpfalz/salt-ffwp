@@ -4,10 +4,11 @@ install batman-adv-dkms and batctl:
       - batman-adv-dkms
       - batctl: 2013.4.0-1
 
-install batadv-vis:
-  pkg.installed:
-    - pkgs:
-      - batadv-vis: 2014.3.0-11
+
+# install batadv-vis:
+#   pkg.installed:
+#     - pkgs:
+#       - batadv-vis: 2014.3.0-11
 
 # The ff_fix_batman script ensures that the preferred (currently older) version
 # of the batman_adv kernel module is compiled via DKMS and installed into the
