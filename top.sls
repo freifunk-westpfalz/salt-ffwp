@@ -11,7 +11,7 @@ base:
     - ssh.keys
     - ssh.config
     - network.ip_rules
-  'firmware*':
+  'firmware01.freifunk-westpfalz.de':
     - firmware
     - nginx.firmware
     - network.br_ffwp
@@ -20,3 +20,7 @@ base:
   'gw*':
     - sysctl.forwarding
 #    - fastd
+  'map.freifunk-westpfalz.de':
+    - nginx.map
+    - map.grafana
+    - map.influxdb
