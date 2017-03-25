@@ -7,14 +7,16 @@ install fastd:
     - require:
       - pkgrepo: add Debian Freifunk repos
 
+{% for instance in pillar['fastd'] %}
+
+#TODO: only execute once
+{% if instance.type == "server" %}
 copy Fastd Blacklist:
   file.managed:
     - name: /etc/fastd/fastd-blacklist.sh
     - mode: 700
     - source: salt://fastd/files/fastd-blacklist.sh
-
-
-{% for instance in pillar['fastd'] %}
+{% endif %}
 
 Fastd template instance {{ instance.name }}:
   file.managed:

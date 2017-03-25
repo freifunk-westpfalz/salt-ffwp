@@ -21,6 +21,9 @@ base:
     - sysctl.forwarding
 #    - fastd
   'map.freifunk-westpfalz.de':
+    - batman
+    - fastd
+    - network.br_ffwp
     - nginx.map
     - map.grafana
     - map.influxdb
