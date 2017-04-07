@@ -19,6 +19,13 @@ create .ffwp directory:
     - group: freifunk
     - makedirs: True
 
+create /var/freifunk:
+  file.directory:
+    - name: /var/freifunk
+    - user: freifunk
+    - group: freifunk
+    - makedirs: true
+
 set git name for user freifunk:
   git.config_set:
     - name: user.name

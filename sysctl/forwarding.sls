@@ -1,9 +1,10 @@
-enable IPv4 forwarding:
+{% set sysctld = "/etc/sysctl.d" %}
+net.ipv4.conf.all.forwarding:
   sysctl.present:
-    - name: net.ipv4.ip_forward
     - value: 1
+    - config: {{ sysctld }}/forward.conf
 
-enable IPv6 forwarding:
+net.ipv6.conf.all.forwarding:
   sysctl.present:
-    - name: net.ipv6.conf.all.forwarding
     - value: 1
+    - config: {{ sysctld }}/forward.conf

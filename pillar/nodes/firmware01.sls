@@ -1,4 +1,6 @@
 #!yaml|gpg
+hostname: firmware01
+fqdn: firmware01.freifunk-westpfalz.de
 backports_kernel: true
 ssh_port: 22151
 git_name: firmware01

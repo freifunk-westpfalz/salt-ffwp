@@ -19,11 +19,15 @@ base:
     - fastd
   'gw*':
     - sysctl.forwarding
+    - sysctl.hightraffic
+    - common.telegraf
 #    - fastd
   'map.freifunk-westpfalz.de':
+    - sysctl.hightraffic
     - batman
     - fastd
     - network.br_ffwp
     - nginx.map
     - map.grafana
     - map.influxdb
+    - map.yanic

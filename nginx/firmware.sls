@@ -1,5 +1,5 @@
 include:
-  - nginx.firmware
+  - nginx
 
 install php for index.html creation:
   pkg.latest:

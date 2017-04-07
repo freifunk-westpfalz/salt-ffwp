@@ -7,7 +7,7 @@ install influxdb:
 influxdb config:
   file.managed:
     - name: /etc/influxdb/influxdb.conf
-    - source: salt://map/files/influxdb.conf.j2
+    - source: salt://map/files/influxdb.j2
     - template: jinja
     - backup: minion
 

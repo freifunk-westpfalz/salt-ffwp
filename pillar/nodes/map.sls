@@ -1,4 +1,6 @@
 #!yaml|gpg
+hostname: map
+fqdn: map.freifunk-westpfalz.de
 backports_kernel: true
 ssh_port: 22153
 git_name: map

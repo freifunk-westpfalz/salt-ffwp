@@ -1,0 +1,65 @@
+# Send respondd request to update information
+[respondd]
+enable           = true
+# how oftern request per multicast
+collect_interval = "1m"
+# on which interface
+interface        = "br_ffwp"
+# define a port to listen
+# (no or 0 would choose at port at his own)
+#port = 10001
+
+
+# A little build-in webserver, which statically serves a directory.
+# This is useful for testing purposes or for a little standalone installation.
+[webserver]
+enable  = false
+bind    = "127.0.0.1:8080"
+webroot = "/var/www/html/meshviewer"
+
+
+[nodes]
+enable         = true
+# structur of nodes.json, which to support
+# version 1 is to support legacy meshviewer (which are in master branch)
+#    i.e. https://github.com/ffnord/meshviewer/tree/master
+# version 2 is to support new version of meshviewer (which are in legacy develop branch or newer)
+#    i.e. https://github.com/ffnord/meshviewer/tree/dev
+#         https://github.com/ffrgb/meshviewer/tree/develop
+nodes_version  = 2
+# path where to store nodes.json
+nodes_path     = "/var/freifunk/yanic/data/nodes.json"
+# path where to store graph.json
+graph_path     = "/var/freifunk/yanic/data/graph.json"
+
+# state-version of nodes.json to store cached data,
+#  these is the directly collected respondd data
+state_path     = "/var/lib/collector/state.json"
+
+# Export nodes and graph periodically
+save_interval = "5s"
+
+# Set node to offline if not seen within this period
+offline_after = "10m"
+
+# Prune offline nodes after a time of inactivity
+prune_after = "7d"
+
+
+# Save collected data to InfluxDB
+# there would be the following measurments:
+#  node: store node spezific data i.e. clients memory, airtime
+#  global: store global data, i.e. count of clients and nodes
+#  firmware: store count of nodes tagged with firmware
+#  model: store count of nodes tagged with hardware model
+[influxdb]
+enable   = true
+address  = "http://localhost:8086"
+database = "ffwp"
+username = ""
+password = ""
+# cleaning data of measurement node,
+#   which are older than 7d
+delete_after = "365d"
+#   how often run the cleaning
+delete_interval = "1h"

@@ -7,7 +7,7 @@ install grafana:
 grafana config:
   file.managed:
     - name: /etc/grafana/grafana.ini
-    - source: salt://map/files/grafana.ini.j2
+    - source: salt://map/files/grafana.j2
     - template: jinja
     - backup: minion
     - group: grafana
