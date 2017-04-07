@@ -8,6 +8,13 @@ create /var/freifunk/yanic/data:
     - group: root
     - makedirs: true
 
+create /var/lib/collector:
+  file.directory:
+    - name: /var/lib/collector
+    - user: freifunk
+    - group: root
+    - makedirs: true
+  
 install yanic:
   cmd.run:
     - name: /usr/local/go/bin/go get -v -u github.com/FreifunkBremen/yanic/cmd/...
