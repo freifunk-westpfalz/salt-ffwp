@@ -11,4 +11,4 @@ nginx-map-service:
 place nginx map config:
   file.managed:
     - name: /etc/nginx/conf.d/map.conf
-    - source: salt://nginx/files/map.conf
+    - source: salt://nginx/files/hosts/map/map.conf
