@@ -14,7 +14,7 @@ create /var/lib/collector:
     - user: freifunk
     - group: root
     - makedirs: true
-  
+
 install yanic:
   cmd.run:
     - name: /usr/local/go/bin/go get -v -u github.com/FreifunkBremen/yanic/cmd/...
@@ -30,14 +30,8 @@ deploy yanic config:
 
 deploy yanic service file:
   file.managed:
-    - name: /lib/systemd/system/yanic.service
+    - name: /etc/systemd/system/yanic.service
     - source: salt://map/files/yanic.service
-
-reload unit files after yanic install:
-  module.wait:
-    - name: service.systemctl_reload
-    - watch:
-      - file: deploy yanic service file
 
 yanic service:
   service.running:
