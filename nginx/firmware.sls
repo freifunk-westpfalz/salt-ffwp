@@ -17,5 +17,5 @@ nginx-firmware-service:
 
 place nginx firmware config:
   file.managed:
-    - name: /etc/nginx/conf.d/firmware.conf
+    - name: /etc/nginx/sites-enabled/firmware.conf
     - source: salt://nginx/files/hosts/firmware/firmware.conf

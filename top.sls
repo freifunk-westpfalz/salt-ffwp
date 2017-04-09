@@ -28,6 +28,6 @@ base:
     - fastd
     - network.br_ffwp
     - nginx.map
-    - map.grafana
-    - map.influxdb
-    - map.yanic
+    - map
+  'web00.freifunk-westpfalz.de':
+    - nginx.host04-reverse

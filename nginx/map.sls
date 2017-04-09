@@ -9,7 +9,7 @@ nginx-map-service:
 {% for config in ['map','stats','api','overview'] %}
 place nginx {{ config }} map config:
   file.managed:
-    - name: /etc/nginx/conf.d/{{ config }}.conf
+    - name: /etc/nginx/sites-enabled/{{ config }}.conf
     - source: salt://nginx/files/hosts/map/{{ config }}.conf
     - watch_in:
       - service: nginx-map-service
