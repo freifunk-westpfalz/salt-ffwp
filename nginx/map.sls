@@ -6,7 +6,7 @@ nginx-map-service:
     - name: nginx
     - enable: True
 
-{% for config in ['map','stats','api'] %}
+{% for config in ['map','stats','api','overview'] %}
 place nginx {{ config }} map config:
   file.managed:
     - name: /etc/nginx/conf.d/{{ config }}.conf
