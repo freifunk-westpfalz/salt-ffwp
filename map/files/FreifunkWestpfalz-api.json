@@ -1,0 +1,105 @@
+{
+    "api": "0.4.13",
+    "contact": {
+        "email": "info@freifunk-westpfalz.de",
+        "facebook": "https://www.facebook.com/FreifunkWestpfalz",
+        "irc": "irc://irc.hackint.org/#ffwp",
+        "ml": "http://lists.freifunk.net/mailman/listinfo/westpfalz-freifunk.net",
+        "twitter": "@FreifunkWP"
+    },
+    "feeds": [
+        {
+            "category": "ics",
+            "name": "Freifunk Westpfalz Kalender",
+            "type": "ics",
+            "url": "https://www.google.com/calendar/ical/us2bn55vga06i6mkumaeg20epg%40group.calendar.google.com/public/basic.ics"
+        },
+        {
+            "category": "blog",
+            "name": "Freifunk Westpfalz Blog",
+            "type": "rss",
+            "url": "http://www.freifunk-westpfalz.de/feed/"
+        }
+    ],
+    "location": {
+        "city": "Westpfalz, Rheinland-Pfalz",
+        "country": "DE",
+        "lat": 49.514584413079,
+        "lon": 7.7681922912598
+    },
+    "name": "Freifunk Westpfalz",
+    "nodeMaps": [
+        {
+            "interval": "1min",
+            "mapType": "list/status",
+            "technicalType": "nodelist",
+            "url": "https://map.freifunk-westpfalz.de/nodelist.json"
+        },
+        {
+            "interval": "1 min",
+            "mapType": "geographical",
+            "technicalType": "meshviewer",
+            "url": "https://map.freifunk-westpfalz.de/"
+        },
+        {
+            "interval": "1min",
+            "mapType": "list/status",
+            "technicalType": "ffmap",
+            "url": "https://map.freifunk-westpfalz.de/nodes.json"
+        }
+    ],
+    "state": {
+        "description": "Produktivbetrieb",
+        "focus": [
+            "Public Free Wifi"
+        ],
+        "lastchange": "2017-04-09T09:15:01.530970",
+        "nodes": 689
+    },
+    "support": {
+        "donations": {
+            "campaigns": [
+                {
+                    "projectid": "33270",
+                    "provider": "betterplace"
+                }
+            ]
+        }
+    },
+    "techDetails": {
+        "firmware": {
+            "name": "Gluon",
+            "url": "http://download.freifunk-westpfalz.de/"
+        },
+        "legals": [
+            "vpnnational",
+            "vpninternational"
+        ],
+        "networks": {
+            "ipv4": [
+                {
+                    "network": "10.198.0.0/16"
+                }
+            ],
+            "ipv6": [
+                {
+                    "network": "fdc6:c4fe:1de4::/48"
+                }
+            ]
+        },
+        "routing": [
+            "batman-adv"
+        ],
+        "updatemode": [
+            "manual",
+            "autoupdate"
+        ]
+    },
+    "timeline": [
+        {
+            "description": "Erstes Treffen",
+            "timestamp": "2014-11-14"
+        }
+    ],
+    "url": "https://www.freifunk-westpfalz.de"
+}
