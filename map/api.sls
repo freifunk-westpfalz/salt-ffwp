@@ -22,5 +22,5 @@ crontab ffapi-updater:
   cron.present:
     - identifier: ffapi-updater
     - user: freifunk
-    - minute: */5
+    - minute: '*/5'
     - name:  (cd /home/freifunk/ffapi-updater.git && /usr/bin/python3 /home/freifunk/ffapi-updater.git/ffapi-updater.py >/home/freifunk/ffapi-updater.git/ffapi-updater.log 2>&1)
