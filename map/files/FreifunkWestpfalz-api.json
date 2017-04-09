@@ -30,12 +30,6 @@
     "name": "Freifunk Westpfalz",
     "nodeMaps": [
         {
-            "interval": "1min",
-            "mapType": "list/status",
-            "technicalType": "nodelist",
-            "url": "https://map.freifunk-westpfalz.de/nodelist.json"
-        },
-        {
             "interval": "1 min",
             "mapType": "geographical",
             "technicalType": "meshviewer",
@@ -45,7 +39,7 @@
             "interval": "1min",
             "mapType": "list/status",
             "technicalType": "ffmap",
-            "url": "https://map.freifunk-westpfalz.de/nodes.json"
+            "url": "https://map.freifunk-westpfalz.de/data/nodes.json"
         }
     ],
     "state": {
