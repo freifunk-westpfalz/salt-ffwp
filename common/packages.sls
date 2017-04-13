@@ -1,7 +1,7 @@
 install common packages:
   pkg.latest:
     - pkgs:
-      - mtr
+      - mtr-tiny
       - htop
       - bash-completion
       - sudo
