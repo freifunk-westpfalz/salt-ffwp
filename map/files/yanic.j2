@@ -56,8 +56,8 @@ prune_after = "7d"
 enable   = true
 address  = "http://localhost:8086"
 database = "ffwp"
-username = ""
-password = ""
+username = "yanic"
+password = "{{ pillar['influxdbuser.yanic.password'] }}"
 # cleaning data of measurement node,
 #   which are older than 7d
 delete_after = "365d"

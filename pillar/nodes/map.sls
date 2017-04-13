@@ -61,3 +61,63 @@ fastd:
       FeuYnD7lUBcsi39LAgh537qxpb0=
       =JHCB
       -----END PGP MESSAGE-----
+
+influxdb.host: localhost
+influxdb.port: 8086
+influxdb.user: admin
+influxdb.password: |
+  -----BEGIN PGP MESSAGE-----
+
+  hQIMAxD9NgfAXz3WAQ//ZFofGGkApUAPLr7N8S+qQcQLZ110SUeSL49AG+ZOxhA0
+  nkLe5vBDlJzV0ju8B81VNkHRwZAQ5x8/IRCAAhETGBakJ/U9Ecqb4/H+4YKY7utz
+  L6qoVEAmNtEIj/AtiMwm14iYfcPIhsloYliAUgruXkBUzStVBFQjesqEOasZXFhD
+  306e/A3V7c5vcG+NGO4nVOOhyXaXyhjI1VtyYJpMfFtz5vZMFjk4Fy2yhhAMHV3G
+  luzx7GS3XPrcEylRL51bHHXZS1tx2oAABmtNeTFQ5VFD5BbyhaiBgGF+ULd9M3Au
+  hOAPDFQ1NB8VLYdEUr1TVifd8m07rCuKPkEg8cAlBwRfODpNs2w0EIIJnNkk9xhN
+  uXQF8M2xvuy72FhoRwwM3CoxJDORnaPqu8V+jt3T3MPO7U80f4SLS//C5mAxlWFW
+  mLKNwn0KT6AcU7Oq8MbRraJMSnzUijIB0ggtVVKFMhxe0OsbZKlIsxx9M+bjT7F/
+  rlbIMDlCF8U2ZtDkFWKVCdj+Yj0nn0CwBfcyaJ4Pyq4Q6K36DziCi/hlBfi8ogAS
+  GhCWZbVpaKpPad9gH3TbPTJhxGM6A8v3V+yC0PlQU+RnjFEgs9evRjIjVSV1qsE7
+  qHoULBDquOkArvXbAkQ4ZjqpW7xY6yBkQIGQrsKvz2UHYnVP9lRcaKg7G6ZRiz7S
+  TwGgM9SR2eBLalK2sUYEEHmoK7RnsPPjilPXIeY476rC+0b6qqmrz2U7vqDrymQN
+  zrkR48eSBO5NFAgS5KO3FpQRK6IZcdBbE5e1YEV5isY=
+  =n4IR
+  -----END PGP MESSAGE-----
+
+influxdbuser.grafana.password: |
+  -----BEGIN PGP MESSAGE-----
+
+  hQIMAxD9NgfAXz3WAQ/+LQkX8+zjiIT8AMr4c5fVi2XzDDelZHz8jaMt2uB7Ndm1
+  skOPXBoCCbT4gsmTce0oonhvtVC6jiXEBgLe8ZbSv1/O6dVH17D5pKbsjoI5zuH3
+  Hs5mXhSVK7/Y5MmwneiGhWWvXmQfRd2Xmnjfiv8QWKTv/PJSypWoYJ2bLzhu5P7W
+  g/DB00q6qU+Xx233h0xzGNScMZ1gE94msyNdEFFchALkoNgg90TNey4TO+J99xX9
+  Re+pBOVXdbVnA98nqSL48qcBIZhIouHiAfxi11TpUVO+B8ejk1kDH3uEA5Pq71Yo
+  DC7b+dtp7+LuzD3KCb0OF91U0aUBwPToDcsY5aizM/vN5rwPn0ezI0OixY4/z1PW
+  LvItPODj3XIu+R6lYows9qSQxl/HmbHi4oI1OHg76+nT9b6LFvBeC7iqlcop1/LF
+  eWA5/X29LzUtwYOjlaSOD+36lFZ0z/uY2O5coK/psudNQFNCiAEWTQZefQJKilMz
+  I6IhoE5bg3J85MFMTTqsCZ9dwTOR3hLENgB99w+woM7B99JoyF0JB9elCpoI68oe
+  VbizWzivz6MXvzM2L06qLZt9j51ubbt4+iY8O2wDuLgdxRXb7z/F+HEysG1jMl09
+  h7OpIsHTbHyfz1f6rs9maxRwMn6bdxCXPimyFxkG18HlH5eDC1ZtvRAGVV30oXHS
+  TwF4LI4iQVYQ2Mrlp1I2yrdqjbsbss6vLK6i+cmafJf3jh/shAgWI9UXgYzo07gz
+  ZoomUzqfB8LFPOQT2Z6I1E14PcUgR+SVkLpCW8MjEqw=
+  =UYDz
+  -----END PGP MESSAGE-----
+
+influxdbuser.yanic.password: |
+  -----BEGIN PGP MESSAGE-----
+
+  hQIMAxD9NgfAXz3WAQ/9Hmm9LT7/8oAl/6dI0nKsw3eQzOaTuMMMCub+dKoyuHjr
+  cCY9DEAfe2jVYgg6SRUawEBXJf1Twt651ElL5JMdi2qHAzp/go0HeeOku4eqF2Tr
+  qU4bjl1HteGGX1aSmh6aezOn51Vy/+IFSeBFdvWEbivk0DMBeWVxzShmazZzQgmM
+  vdbbOEs68L6/LlCqFpqSm3H4JRjuE9jaS/XozXHXWZOpBG8FXHSFpsvAVk/tWh9r
+  No7YJ2jH7hFNQUlbl+vYopg/TTNQJaI7UzX/TytU/Ibw9tnSbmyf1ZFPtlz7WuK+
+  1GMSsLvEn/LYjkVleJ4fKYYMOZsh4EzEyqqoDcVPWvuYEzgsBFUQ8/b5sO1UdEBY
+  1oiLCpmnymC8QcSDME5G1B09SSFQgNgh7/n/v3Ki7dpDgZH4KD/tmJir759cc0nh
+  0eJS22tk34OrJ544zzWK6REeMy/dWZEK3RKujHMx+GzgDr9ohlhppt/mmPPOM92j
+  76kq6tHkhS5pHZlyseLCAGBh/jLKF3P533E3+LRRO6slhCo7Imn2fH7W7NszNwn/
+  ko6w64NSv3+gLKxXAUPLYPd6aVf8f0DGe7e63jC6oDOjGFSaOrncC04tS0WfbEcY
+  h800yi/vT+ecnFWdUuIwRImJ03ayyeoemr4Bv1aZfiXPXfURvkvF/qsEHVJwQkzS
+  TwEri7jABuN+0kBGwfmiiPfAj7uVo/+vvEUmVSZN1yhsJzq0Cc2QA5liRdsQsdh7
+  8pss5QTrdE3nQORKl5bsD3P70N7sejZqNffOdVTyo4o=
+  =KXE4
+  -----END PGP MESSAGE-----
