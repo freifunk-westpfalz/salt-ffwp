@@ -1,0 +1,36 @@
+{%- set dhcp = pillar['dhcp_server'] -%}
+{% macro address(input) -%}
+    {{ salt['netaddr.address'](input) }}
+{%- endmacro -%}
+
+ddns-update-style none;
+option domain-name "{{ dhcp['domain']}}";
+
+{%- if 'lease' in dhcp %}
+{%- set lease = dhcp['lease'] %}
+{% if 'renew' in lease %}
+default-lease-time {{ lease['renew'] }};
+{%- endif %}{%- if 'renew' in lease %}
+max-lease-time {{ lease['max'] }};
+{%- endif -%}
+{%- endif %}
+log-facility local7;
+
+subnet 10.198.0.0 netmask 255.255.0.0 {
+    authoritative;
+
+    {% if dhcp['enabled'] -%}
+    interface br-ffwp;
+    {%- endif %}
+
+    range {{ dhcp['range']['start'] }} {{ dhcp['range']['end'] }};
+
+    # DNS servers to be pushed to our clients.
+    option domain-name-servers {{ ", ".join(dhcp['nameserver']) }};
+    # Use our own IP as gateway for our clients
+    option routers {{address(salt['pillar.get']('network:br_ffwp:v4_network'))}};
+
+    # NTP servers pushed to our clients
+    option ntp-servers {{ ", ".join(dhcp['nameserver']) }};
+}
+include "/etc/dhcp/static.conf";

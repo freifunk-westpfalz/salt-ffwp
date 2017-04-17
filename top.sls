@@ -21,6 +21,7 @@ base:
     - sysctl.forwarding
     - sysctl.hightraffic
     - common.telegraf
+    - dhcp_server
 #    - fastd
   'map.freifunk-westpfalz.de':
     - sysctl.hightraffic
