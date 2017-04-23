@@ -23,6 +23,8 @@ base:
     - common.telegraf
     - dhcp_server
 #    - fastd
+  'bgp*':
+    - common.telegraf
   'map.freifunk-westpfalz.de':
     - sysctl.hightraffic
     - batman
