@@ -1,0 +1,74 @@
+#!/usr/bin/env python2
+from isc_dhcp_leases.iscdhcpleases import Lease, IscDhcpLeases
+from influxdb import InfluxDBClient
+import socket
+import time
+import datetime
+import sys
+import os
+import json
+import datetime
+
+host = "{{ pillar['hostname'] }}"
+
+influxdb_client = InfluxDBClient(host='host04-map.freifunk-westpfalz.de', port=8086, username='telegraf', password='{{ pillar['influxdbuser.telegraf.password'] }}', database='ffwp_telegraf')
+
+leases = IscDhcpLeases('/var/lib/dhcp/dhcpd.leases')
+active_leases = leases.get_current()
+
+dhcp_leases = [
+    {
+        "measurement": "dhcp_leases",
+        "tags": {
+            "host": str(host)
+        },
+        "fields": {
+            "active": int(len(active_leases))
+        }
+    }
+]
+influxdb_client.write_points(dhcp_leases)
+
+def recv_data(the_socket):
+    total_data=[]
+    while True:
+        data = the_socket.recv(8192)
+        if not data: break
+        total_data.append(data)
+    return ''.join(total_data)
+
+fastd_instance = "1406_01"
+fastd_client = socket.socket( socket.AF_UNIX, socket.SOCK_STREAM )
+try:
+    fastd_client.connect('/var/run/fastd-ffwp.status')
+    message = recv_data(fastd_client)
+    try:
+        fastd_data = json.loads(message.decode('utf-8'))
+        fastd = [
+            {
+                "measurement": "fastd",
+                "tags": {
+                    "host": str(host),
+                    "instance": str(fastd_instance)
+                },
+                "fields": {
+                    "uptime": int(fastd_data["uptime"]),
+                    "peers": len(fastd_data["peers"]),
+                    "rx_packets": int(fastd_data["statistics"]["rx"]["packets"]),
+                    "rx_bytes": int(fastd_data["statistics"]["rx"]["bytes"]),
+                    "rx_reordered_packets": int(fastd_data["statistics"]["rx_reordered"]["packets"]),
+                    "rx_reordered_bytes": int(fastd_data["statistics"]["rx_reordered"]["bytes"]),
+                    "tx_packets": int(fastd_data["statistics"]["tx"]["packets"]),
+                    "tx_bytes": int(fastd_data["statistics"]["tx"]["bytes"]),
+                    "tx_dropped_packets": int(fastd_data["statistics"]["tx_dropped"]["packets"]),
+                    "tx_dropped_bytes": int(fastd_data["statistics"]["tx_dropped"]["bytes"]),
+                    "tx_error_packets": int(fastd_data["statistics"]["tx_error"]["packets"]),
+                    "tx_error_bytes": int(fastd_data["statistics"]["tx_error"]["bytes"])
+                }
+            }
+        ]
+        influxdb_client.write_points(fastd)
+    except (ValueError, KeyError, TypeError):
+        print "Fastd JSON format error"
+except:
+    pass

@@ -18,11 +18,7 @@ base:
     - batman
     - fastd
   'gw*':
-    - sysctl.forwarding
-    - sysctl.hightraffic
-    - common.telegraf
-    - dhcp_server
-#    - fastd
+    - gw
   'bgp*':
     - common.telegraf
   'map.freifunk-westpfalz.de':
