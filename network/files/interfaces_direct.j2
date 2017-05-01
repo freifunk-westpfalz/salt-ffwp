@@ -1,0 +1,33 @@
+{# ToDo: auslagern und includen #}
+{% macro address(input) -%}
+    {{ salt['netaddr.address'](input) }}
+{%- endmacro -%}
+{% macro netmask(input) -%}
+    {{ salt['netaddr.netmask'](input) }}
+{%- endmacro -%}
+{% macro prefix(input) -%}
+    {{ salt['netaddr.prefix'](input) }}
+{%- endmacro -%}
+{% macro net(input) -%}
+    {{ salt['netaddr.net'](input) }}
+{%- endmacro -%}
+{% macro cidr(input) -%}
+    {{ salt['netaddr.cidr'](input) }}
+{%- endmacro -%}
+{% if network.interfaces_direct is defined -%}
+{% for direct in network.interfaces_direct -%}
+
+auto {{direct.interface}}
+iface {{direct.interface}} inet static
+        address {{ address(direct.v4_network) }}
+        netmask {{ netmask(direct.v4_network) }}
+        post-up ip link set $IFACE mtu 1400
+
+iface {{direct.interface}} inet6 static
+        address {{ address(direct.v6_network) }}
+        netmask {{ prefix(direct.v6_network) }}
+        post-up ip address add {{ direct.v6_linklocal }} dev $IFACE
+        post-down ip address del {{ direct.v6_linklocal }} dev $IFACE
+
+{%- endfor -%}
+{%- endif -%}
