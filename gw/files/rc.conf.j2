@@ -1,0 +1,60 @@
+#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+#verhindert dass Packete an private IP Ranges über default Route (eth0) gehen
+#blocke private Adressbereiche (RFC1918)
+/sbin/ip -4 route add unreachable 10.0.0.0/8 table main || true
+/sbin/ip -4 route add unreachable 172.16.0.0/12 table main || true
+/sbin/ip -4 route add unreachable 192.168.0.0/16 table main || true
+#blocke Carrier-grade NAT Adressbereich (RFC6598)
+/sbin/ip -4 route add unreachable 100.64.0.0/10 table main || true
+#blocke Multicast Adressbereich
+/sbin/ip -4 route add unreachable 224.0.0.0/3 table main || true
+#blocke Reserved Adressbereich
+/sbin/ip -4 route add unreachable 240.0.0.0/4 table main || true
+#blocke Loopback Adressbereich
+/sbin/ip -4 route add unreachable 127.0.0.0/8 table main || true
+#blocke Documentation Adressbereich
+/sbin/ip -4 route add unreachable 192.0.0.0/24 table main || true
+/sbin/ip -4 route add unreachable 198.51.100.0/24 table main || true
+/sbin/ip -4 route add unreachable 203.0.113.0/24 table main || true
+
+/sbin/ip -4 route add unreachable default metric 1337 table 42 || true
+/sbin/ip -4 rule add from all fwmark 0x1 table 42 priority 40|| true
+
+/sbin/ip -6 route add unreachable default metric 1337 table 42 || true
+/sbin/ip -6 rule add from all fwmark 0x1 table 42 priority 40|| true
+
+#Vorsichtsmaßnamen:
+/sbin/ip -4 rule add unreachable iif br_ffwp priority 41 || true
+/sbin/ip -6 rule add unreachable iif br_ffwp priority 41 || true
+/sbin/ip -4 rule add unreachable from all fwmark 0x1 priority 42 || true
+/sbin/ip -6 rule add unreachable from all fwmark 0x1 priority 42 || true
+
+#Damit OSPF funktioniert alle OSPF Routen bis auf Default Routen
+/sbin/ip -4 rule add from all table 43 priority 50 || true
+/sbin/ip -6 rule add from all table 43 priority 50 || true
+
+#Ausgehende Pakete die über Exit sollen mit Source IP matchen und in richtige Tabelle schieben
+#sonst würden z.B ICMP Echo-Replys über normale Default Route gehen bzw in die unreachable Routen rennen
+/sbin/ip -6 rule add from {{ffwp.v6_ffrl_48}} table 42 priority 51 || true
+/sbin/ip -6 rule add from {{ffwp.v6_ula_48}} table 42 priority 52 || true
+/sbin/ip -4 rule add from 10.198.0.0/16 lookup 42 priority 51 || true
+
+#Vorsichtsmaßnamen:
+/sbin/ip -4 rule add unreachable from {{ffwp.v4_network}} priority 53 || true
+/sbin/ip -6 rule add unreachable from {{ffwp.v6_ffrl_48}} priority 53 || true
+/sbin/ip -6 rule add unreachable from {{ffwp.v6_ula_48}} priority 54 || true
+
+
+exit 0
