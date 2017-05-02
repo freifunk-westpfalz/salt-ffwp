@@ -2,6 +2,7 @@
 ffwp:
   as_number: 65242
   v4_network: 10.198.0.0/16
+  #TODO: tatsaechlich genutztes Clientnetz von komplettem /16 trennen
   v6_ula_48: fdc6:c4fe:1de4::/48
   v6_ula_prefix: "fdc6:c4fe:1de4:0000:"
   v6_ffrl_48: 2a03:2260:100d::/48
