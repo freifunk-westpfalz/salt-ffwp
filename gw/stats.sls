@@ -19,4 +19,4 @@ crontab influxdb_gw_stats.py:
   cron.present:
     - identifier: influxdb_gw_stats.py
     - minute: '*'
-    - name: /usr/bin/python2 /root/influxdb_gw_stats.py
+    - name: /usr/bin/python2 /root/influxdb_gw_stats.py > /dev/null

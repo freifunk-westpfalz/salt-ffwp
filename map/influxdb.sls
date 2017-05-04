@@ -33,39 +33,25 @@ create influxdbuser admin:
     - admin: true
 {% endif %}
 
-{% for user in ['grafana','yanic','telegraf','icinga'] %}
+{% for user in ['grafana','yanic','telegraf','icinga','ext_measurement'] %}
 create influxdbuser {{ user }}:
   influxdb_user.present:
     - name: {{ user }}
     - password: {{ salt['pillar.get']('influxdbuser.'~user~'.password') }}
 {% endfor %}
 
-{% for db in ['ffwp','ffwp_telegraf','ffwp_icinga'] %}
+{% for db in ['ffwp','ffwp_telegraf','ffwp_icinga','ffwp_ext_measurement_ping'] %}
 create influxdb {{ db }}:
   influxdb_database.present:
     - name: {{ db }}
+
+set permissions for influxdbuser grafana for db {{ db }}:
+  module.run:
+    - name: influxdb.grant_privilege
+    - database: {{ db }}
+    - username: grafana
+    - privilege: read
 {% endfor %}
-
-set permissions for influxdbuser grafana for db ffwp:
-  module.run:
-    - name: influxdb.grant_privilege
-    - database: ffwp
-    - username: grafana
-    - privilege: read
-
-set permissions for influxdbuser grafana for db ffwp_telegraf:
-  module.run:
-    - name: influxdb.grant_privilege
-    - database: ffwp_telegraf
-    - username: grafana
-    - privilege: read
-
-set permissions for influxdbuser grafana for db ffwp_icinga:
-  module.run:
-    - name: influxdb.grant_privilege
-    - database: ffwp_icinga
-    - username: grafana
-    - privilege: read
 
 set permissions for influxdbuser yanic for db ffwp:
   module.run:
@@ -86,6 +72,13 @@ set permissions for influxdbuser telegraf for db ffwp_telegraf:
     - name: influxdb.grant_privilege
     - database: ffwp_telegraf
     - username: telegraf
+    - privilege: all
+
+set permissions for influxdbuser ext_measurement for db ffwp_ext_measurement_ping:
+  module.run:
+    - name: influxdb.grant_privilege
+    - database: ffwp_ext_measurement_ping
+    - username: ext_measurement
     - privilege: all
 
 influxdb with auth config:
