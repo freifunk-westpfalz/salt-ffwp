@@ -13,6 +13,13 @@ network:
       v4_network: 10.198.120.141/31
       v6_network: 2a03:2260:100d:ff06::2/64
       v6_linklocal: fe80::2/64
+  firewall:
+    input:
+      policy: DROP
+    output:
+      policy: ACCEPT
+    forward:
+      policy: DROP
 
 batman:
   gateway: false

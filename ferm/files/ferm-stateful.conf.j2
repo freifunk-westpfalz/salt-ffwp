@@ -1,0 +1,23 @@
+domain (ip ip6) {
+  table filter {
+    chain INPUT {
+      policy {{ salt['pillar.get']('network:firewall:input:policy', 'DROP') }};
+
+      interface lo ACCEPT;
+
+      proto icmp ACCEPT;
+      proto tcp dport {{ salt['pillar.get']('ssh_port', '22') }} ACCEPT;
+      mod state state (ESTABLISHED RELATED) ACCEPT;
+    }
+
+    chain OUTPUT {
+      policy {{ salt['pillar.get']('network:firewall:output:policy', 'ACCEPT') }};
+    }
+
+    chain FORWARD {
+      policy {{ salt['pillar.get']('network:firewall:forward:policy', 'DROP') }};
+    }
+  }
+}
+
+@include '/etc/ferm.d/';
