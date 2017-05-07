@@ -10,6 +10,7 @@ base:
     - ssh.keys
     - ssh.config
     - network.ip_rules
+    - ntpd
   'firmware01.freifunk-westpfalz.de':
     - firmware
     - nginx.firmware
