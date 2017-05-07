@@ -1,3 +1,6 @@
+include:
+  - ferm
+
 unbound:
     pkg.installed: []
     service.running:
@@ -30,3 +33,14 @@ update unbound anchor for DNSSEC:
       - name: /usr/sbin/unbound-anchor -a "/var/lib/unbound/root.key"
       - watch_in:
         - service: unbound
+
+place /etc/ferm.d/unbound.conf:
+  file.managed:
+    - name: /etc/ferm.d/unbound.conf
+    - source: salt://unbound/files/unbound.ferm.j2
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - watch_in:
+      - service: service ferm
