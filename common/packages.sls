@@ -34,7 +34,6 @@ install common packages:
       - ethtool
       - python-pip
       - ncdu
-      - ntp
       - vnstat
       - icinga2
       - nagios-plugins
