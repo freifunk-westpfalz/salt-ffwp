@@ -28,8 +28,9 @@ batman:
 
 fastd:
   - name: "1406_01"
-    type: client
+    type: server
     mtu: 1406
+    port: 10000
     mac: FE:F8:FF:01:01:00
     secret: |
       -----BEGIN PGP MESSAGE-----
