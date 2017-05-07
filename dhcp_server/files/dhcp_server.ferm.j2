@@ -1,0 +1,7 @@
+domain (ip) {
+  table filter {
+    chain INPUT {
+      interface br_ffwp proto udp dport 67 sport 68 ACCEPT;
+    }
+  }
+}
