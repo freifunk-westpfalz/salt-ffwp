@@ -2,8 +2,16 @@ install ferm:
   pkg.installed:
     - name: ferm
 
-#ggf. noch CACHE=no in /etc/default/ferm
-#ggf. systemd
+/etc/default/ferm:
+  file.managed:
+    - source: salt://ferm/files/ferm
+
+/etc/systemd/system/ferm.service:
+  file.managed:
+    - source: salt://ferm/files/ferm.service
+    - user: root
+    - group: root
+    - mode: 644
 
 /etc/ferm.d:
   file.directory:
@@ -26,3 +34,5 @@ service ferm:
   service.running:
     - name: ferm
     - enable: true
+    - require:
+      - file: /etc/systemd/system/ferm.service
