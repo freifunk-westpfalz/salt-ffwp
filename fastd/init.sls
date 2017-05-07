@@ -1,5 +1,6 @@
 include:
   - apt.freifunk
+  - ferm
 
 install fastd:
   pkg.latest:
@@ -51,3 +52,15 @@ enable/run systemd instance {{ instance.name }}:
     - watch:
       - file: /etc/fastd/{{ instance.name }}/fastd.conf
 {% endfor %}
+
+#TODO: nur wenn es mindestens einen Fastd Server gibt
+place /etc/ferm.d/fastd.conf:
+  file.managed:
+    - name: /etc/ferm.d/fastd.conf
+    - source: salt://fastd/files/fastd.ferm.j2
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - watch_in:
+      - service: service ferm

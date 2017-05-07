@@ -1,0 +1,11 @@
+domain (ip ip6) {
+  table filter {
+    chain INPUT {
+{% for instance in pillar['fastd'] -%}
+{% if instance.type == "server" %}
+      proto udp dport {{ instance.port }} ACCEPT;
+{% endif-%}
+{% endfor -%}
+    }
+  }
+}
