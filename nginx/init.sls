@@ -1,5 +1,6 @@
 include:
   - apt.debian
+  - ferm
 
 install openssl from backports:
   pkg.latest:
@@ -47,3 +48,14 @@ restart nginx:
   service.running:
     - name: nginx
     - enable: true
+
+place /etc/ferm.d/nginx.conf:
+  file.managed:
+    - name: /etc/ferm.d/nginx.conf
+    - source: salt://nginx/files/nginx.ferm.j2
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - watch_in:
+      - service: service ferm
