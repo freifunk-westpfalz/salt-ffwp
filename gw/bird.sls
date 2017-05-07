@@ -1,5 +1,6 @@
 include:
   - apt.bird
+  - ferm
 
 install gw bird:
   pkg.installed:
@@ -25,3 +26,14 @@ service {{bird}}:
     - watch:
       - file: place gw {{bird}}.conf
 {% endfor %}
+
+place  gw /etc/ferm.d/bird.conf:
+  file.managed:
+    - name: /etc/ferm.d/bird.conf
+    - source: salt://gw/files/bird.ferm.j2
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - watch_in:
+      - service: service ferm
