@@ -4,7 +4,7 @@
 {%- endmacro -%}
 
 ddns-update-style none;
-option domain-name "{{ dhcp['domain']}}";
+option domain-name "{{ pillar['ffwp']['search_domain']}}";
 
 {%- if 'lease' in dhcp %}
 {%- set lease = dhcp['lease'] %}

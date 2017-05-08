@@ -8,6 +8,7 @@ ffwp:
   v6_ffrl_48: 2a03:2260:100d::/48
   v6_ffrl_00_56: 2a03:2260:100d:0000::/56
   v6_public_prefix: "2a03:2260:100d:0000:"
+  search_domain: ffwp.info
 
 influxdbuser.telegraf.password: |
   -----BEGIN PGP MESSAGE-----
