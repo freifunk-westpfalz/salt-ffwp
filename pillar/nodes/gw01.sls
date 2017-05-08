@@ -19,10 +19,12 @@ network:
     output:
       policy: ACCEPT
     forward:
-      policy: DROP
+      policy: ACCEPT
+    prerouting:
+      policy: ACCEPT
 
 batman:
-  gateway: false
+  gateway: true
   bandwidth: 96mbit/96mbit
   mac: FE:F8:FF:01:00:00
 
@@ -35,26 +37,25 @@ fastd:
     secret: |
       -----BEGIN PGP MESSAGE-----
 
-      hQIMAxD9NgfAXz3WAQ//cn5nvYc72f192hyqHas9WaG5pQYiyUzOXC3sr5Mqaml3
-      vsiPD/hUkF/35/bPohsNnsh4zzdKOq0ieCkQl1HrmGN4jkHoWnxlVg9eJZaGrzVQ
-      tpUZaaPdw9iFN89GV5JebU2lmUNxEh5vakZYSj1SNRBDrUI0W+wsGsVmy7/HN4yB
-      IFrrIRneVXN+VWA4OWfYDHZgdI/fjGA1QHA4g3Y2n7mxYLS2Wf8Iwo601xczNFxd
-      PByJkldPeo6fxNwDoS4qlcb/kHMrWC62qkBEGOQgcSv9VMdYhgSJyYhXk7bBOAvb
-      GGzszmj1oliRkbRh0rzRONOx8LqYVocLjKLsnaS6lp4AqfcZV2xQA3mzgusvZHRj
-      Szs2NFoEkAD50+BGlBKraLSw8Gf2MWUiiua9pDcwCBl4wE7Sy8hk0fZ2PkXn+2fz
-      YMGfphM3dDAcF97Y88RYuf9wEZaqL+1Qep6qH6x05MB3biQ+TooKCnLMDEZA3Yd2
-      sRfaInZwfgQ2RvOBVjTsIys2vP+daK781zo1BjvHSBZsEvAKxwabHW1zqFvOTYjN
-      kh3UfEJs7/wdldV8CvKHJoV6HS9DwCqChrqYz6kkW343YAbErCUT+A3qaxaGyMuH
-      8UeDRdOsgOO3/SSYgPoQ9OIjehGuyeI7D+aUe08ctO4EoJKd4X7QNT9L6pwr9hLS
-      cwGUswtc9zKe4j2Nb6hr3rIUxSi2RPIBytmrtl7x+1LEEKKaSZZ4Vvh/ybKQHUYy
-      keRYzf7APsr/7Xt/TUMMYj8TdgmLemw6TxOEHCtSXYWg22cyWuz/rPb117YIOu3q
-      ct9v/XTFMVMfBHJ3kz+u/UtPgxs=
-      =DOGx
+      hQIMAxD9NgfAXz3WAQ/9Etcqp+bqV4QIpODjK04dCOOG/3IEfuGevg28gYQ0AD42
+      3SixVgdlrzQzC68fmlFmX1COjFGwK7xPRi7rCIwe7quGB0iBmGwWV919gyMWKQcx
+      erPE8DJEsVFLv3Q5jJ/dFqt1XENGHx1mPLZlB2Kl+QWBclKKxHzPlLIqYkQx3Iu0
+      K8RuXkI5GAtLyREkVpI/vfvbANJCidhw6q2kmshOLgJJqJna7bGoCJ3MexTwFMpX
+      qbjbAzgJI140krnmjkjlO/mkA9+ob6aKPL2pOnorND3QAoo3LN9IX2GQuGhYZo7H
+      xDcFnXNl6DpEvyES1bR6at5jggWDR4z4ow6RGWGEHPMVcfXAVHlecUAiWllXHnc4
+      P46i0N7NEEIUw5szdwTmLkYacFZBVg1BFilYy5gGy8f9nw2bEXtaPj0AyAF0Yo08
+      qMzj3PEWGUrMXCO35q1PcvaqZF6bh/8TGJYqA+48ImEdHhTgGaDY6FI3eTgwMfyK
+      jDyR/QW/TWEwAS40im9IS3G4jf4IArF8Il15m8+3RjmdemNn2rQ9Tas1zaEOB69D
+      vvFyNa1p+EMZ7VdNnxBhHiV5rBzjCCMAhSsZouS5Ihw09fEX/e6sNF75axYJWFMD
+      tsDacfExsNFTqTTmG5CXfUJfpAmBrI5ZnNFf8NLpqBcW04cf8iSlZi7k786Ipn3S
+      dAH8yQQpI6GObYzhFa43zxvO9sl3WUQe9EDl/AJopD1ysJDvXcXI8vleu3C17lPQ
+      M8vwrfmxy1Ls9GrOBswXs7UQvgCTIa2EMi848wH9kD/d8ZpR74xL9L3wQb9Jpufb
+      kgxO9vEusawF3pTCfU8RvwQ3efCf
+      =FmrQ
       -----END PGP MESSAGE-----
 
 dhcp_server:
   enabled: true
-  domain: ffwp.info
   lease:
     max: 7200
     renew: 1800

@@ -40,7 +40,7 @@ def recv_data(the_socket):
 fastd_instance = "1406_01"
 fastd_client = socket.socket( socket.AF_UNIX, socket.SOCK_STREAM )
 try:
-    fastd_client.connect('/var/run/fastd-ffwp.status')
+    fastd_client.connect('/var/run/fastd_1406_01.status')
     message = recv_data(fastd_client)
     try:
         fastd_data = json.loads(message.decode('utf-8'))

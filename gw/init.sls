@@ -4,5 +4,10 @@ include:
   - network.ip_rules
   - gw.rc_local
   - network.interfaces_direct
+  - network.br_ffwp
+  - batman
+  - gw.bird
   - dhcp_server
-# - fastd
+  - unbound
+  - fastd
+  - gw.stats
