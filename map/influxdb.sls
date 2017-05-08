@@ -1,8 +1,22 @@
+include:
+  - ferm
+
 install influxdb:
   pkg.installed:
     - sources:
       - influxdb: https://dl.influxdata.com/influxdb/releases/influxdb_1.2.2_amd64.deb
     - allow_updates: true
+
+place /etc/ferm.d/influxdb.conf:
+  file.managed:
+    - name: /etc/ferm.d/influxdb.conf
+    - source: salt://map/files/influxdb.ferm.j2
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+    - watch_in:
+      - service: service ferm
 
 install python influxdb:
   pip.installed:

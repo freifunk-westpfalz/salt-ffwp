@@ -1,0 +1,8 @@
+domain (ip ip6) {
+  table filter {
+    chain INPUT {
+      #Backups (Port 8088) gff. noch freigeben
+      proto tcp dport 8086 ACCEPT;
+    }
+  }
+}
