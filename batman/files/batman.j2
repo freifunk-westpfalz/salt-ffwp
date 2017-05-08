@@ -8,11 +8,11 @@ iface bat0 inet6 manual
         {% if salt['pillar.get']('batman:gateway') -%}
         post-up batctl -m $IFACE gw server {{ salt['pillar.get']('batman:bandwidth') }}
         {% endif -%}
+        #IP Rules redundant mit rc.local
         post-up /sbin/ip rule add from all fwmark 0x1 table 42
         post-up /sbin/ip -6 rule add from all fwmark 0x1 table 42
         post-up /sbin/ip rule add iif br_ffwp lookup 42
         post-up /sbin/ip -6 rule add iif br_ffwp lookup 42
         post-up echo 120 > /sys/class/net/$IFACE/mesh/hop_penalty
-#       post-up systemctl start alfred.service
         pre-down brctl delif br_ffwp $IFACE || true
         down ip link set $IFACE down
