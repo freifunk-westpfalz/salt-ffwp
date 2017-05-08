@@ -46,3 +46,12 @@ domain (ip) {
    }
  }
 }
+
+#Android Workaround bis es public v6 gibt
+domain (ip6) {
+  table filter {
+    chain FORWARD {
+      daddr 2000::/3 REJECT reject-with icmp6-no-route;
+    }
+  }
+}
