@@ -19,7 +19,7 @@ place static.conf:
 service isc-dhcp-server:
   service.running:
     - name: isc-dhcp-server
-    - enabled: true
+    - enable: true
     - watch:
       - file: place static.conf
       - file: place dhcpd.conf

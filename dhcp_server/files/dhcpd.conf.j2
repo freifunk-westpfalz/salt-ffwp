@@ -16,11 +16,11 @@ max-lease-time {{ lease['max'] }};
 {%- endif %}
 log-facility local7;
 
-subnet 10.198.0.0 netmask 255.255.0.0 {
+subnet 10.198.0.0 netmask 255.255.192.0 {
     authoritative;
 
     {% if dhcp['enabled'] -%}
-    interface br-ffwp;
+    interface br_ffwp;
     {%- endif %}
 
     range {{ dhcp['range']['start'] }} {{ dhcp['range']['end'] }};
