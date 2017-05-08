@@ -110,3 +110,20 @@ protocol kernel kernel_interior {
         table interior;
         kernel table 43;
 };
+
+protocol radv {
+        interface "br_ffwp" {
+          link mtu 1280;
+          #prefix {{ net([ffwp.v6_public_prefix, network.br_ffwp.v6_suffix] | join) }} {};
+          prefix {{ net([ffwp.v6_public_prefix, network.br_ffwp.v6_suffix] | join) }} {
+                        autonomous off; # So do not autoconfigure any IP
+                };
+          prefix {{ net([ffwp.v6_ula_prefix, network.br_ffwp.v6_suffix] | join) }} {};
+        };
+        rdnss {
+          ns {{ address([ffwp.v6_ula_prefix, network.br_ffwp.v6_suffix] | join) }};
+        };
+        dnssl {
+          domain "{{ pillar['ffwp']['search_domain']}}";
+        };
+};
