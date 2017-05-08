@@ -18,6 +18,31 @@ domain (ip ip6) {
       policy {{ salt['pillar.get']('network:firewall:forward:policy', 'DROP') }};
     }
   }
+  table mangle {
+    chain PREROUTING {
+      policy {{ salt['pillar.get']('network:firewall:prerouting:policy', 'ACCEPT') }};
+    }
+  }
+}
+
+# Erlaube Traffic in alle angeschlossenen v4 Netze
+domain (ip) {
+ table filter {
+   chain OUTPUT {
+    {% for net in salt['network.subnets']() -%}
+    daddr {{ net }} ACCEPT;
+    {% endfor -%}
+   }
+ }
 }
 
 @include '/etc/ferm.d/';
+
+# Verbiete Traffic in alle anderen oeffentlichen v4 Netze
+domain (ip) {
+ table filter {
+   chain OUTPUT {
+    daddr (10.0.0.0/8 172.16.0.0/12 192.168.0.0/16) REJECT reject-with icmp-host-prohibited;
+   }
+ }
+}
