@@ -1,0 +1,7 @@
+domain (ip ip6) {
+  table mangle {
+    chain PREROUTING {
+      interface br_ffwp MARK set-xmark 0x1/0xffffffff;
+    }
+  }
+}
