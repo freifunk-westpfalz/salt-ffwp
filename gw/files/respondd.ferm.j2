@@ -1,0 +1,7 @@
+domain ip6 {
+  table filter {
+    chain INPUT {
+      interface br_ffwp proto udp dport 1001 ACCEPT;
+    }
+  }
+}

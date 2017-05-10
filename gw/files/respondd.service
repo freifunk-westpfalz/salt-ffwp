@@ -1,0 +1,13 @@
+[Unit]
+Description=respondd (respondd Status for Servers)
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/srv/respondd/
+ExecStart=/srv/respondd/ext-respondd.py -c /srv/respondd/config.json
+
+[Install]
+WantedBy=multi-user.target

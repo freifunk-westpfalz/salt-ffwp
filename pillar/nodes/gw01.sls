@@ -4,6 +4,15 @@ fqdn: gw01.freifunk-westpfalz.de
 backports_kernel: true
 ssh_port: 42228
 git_name: gw01
+
+respondd:
+  location:
+    latitude: 50.478206
+    longitude: 12.335986
+  mac: fe:f8:ff:01:01:00
+  node_id: fef8ff010100
+  fastd_instance: fastd_1406_01
+
 network:
   br_ffwp:
     v4_network: 10.198.8.1/16
