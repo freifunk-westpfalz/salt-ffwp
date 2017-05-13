@@ -1,13 +1,6 @@
 include:
   - nginx
 
-install php for index.html creation:
-  pkg.latest:
-    - names:
-      - php5
-      - php5-fpm
-      - php5-common
-
 nginx-firmware-service:
   service.running:
     - name: nginx

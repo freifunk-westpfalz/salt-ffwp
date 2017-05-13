@@ -42,6 +42,7 @@ fastd:
       -----END PGP MESSAGE-----
 
 firmware:
+  crontab_nightly: false
   public_key: 47f2ebfbb7e16a46fccf8514815e0fcd76868e4db6088e4bd65dca972fd93af1
   secret_key: |
     -----BEGIN PGP MESSAGE-----
