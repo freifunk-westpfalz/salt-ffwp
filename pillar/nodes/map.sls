@@ -9,6 +9,13 @@ network:
   br_ffwp:
     v4_network: 10.198.0.3/16
     v6_suffix: beef::3/64
+  firewall:
+    input:
+      policy: ACCEPT
+    output:
+      policy: ACCEPT
+    forward:
+      policy: ACCEPT
 
 grafana:
   admin_user: admin
