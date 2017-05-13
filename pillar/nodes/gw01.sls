@@ -9,8 +9,9 @@ respondd:
   location:
     latitude: 50.478206
     longitude: 12.335986
-  mac: fe:f8:ff:01:01:00
-  node_id: fef8ff010100
+  #batman mac
+  mac: FE:F8:FF:01:00:00
+  node_id: fef8ff010000
   fastd_instance: fastd_1406_01
 
 network:
