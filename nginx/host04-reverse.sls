@@ -8,7 +8,7 @@ acme host04-reverse config:
     - source: salt://nginx/files/hosts/host04-reverse/acme_response-file.yaml
     - makedirs: True
 
-# {% if not salt['file.directory_exists' ]('/var/lib/acme/live/neuropil.org') %}
+# {% if not salt['file.directory_exists' ]('/var/lib/acme/live/map.freifunk-westpfalz.de') %}
 #
 # request LE certs for host04-reverse domains:
 #   cmd.run:
