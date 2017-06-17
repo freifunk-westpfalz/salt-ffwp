@@ -2,17 +2,22 @@ include:
   - apt.debian
   - ferm
 
+
+{% if grains['os'] == 'Debian' and grains['oscodename'] == 'jessie' %}
 install openssl from backports:
   pkg.latest:
     - pkgs:
       - openssl
       - libssl1.0.0
     - fromrepo: jessie-backports
+{% endif %}
 
 install nginx:
   pkg.installed:
     - name: nginx
+{% if grains['os'] == 'Debian' and grains['oscodename'] == 'jessie' %}
     - fromrepo: jessie-backports
+{% endif %}
 
 /etc/nginx/snippets:
   file.directory:

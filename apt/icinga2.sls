@@ -1,4 +1,4 @@
-{% if grains['os'] == 'Debian' %}
+{% if grains['os'] == 'Debian' and grains['oscodename'] == 'jessie' %}
 add Debian Icinga2 repos:
   pkgrepo.managed:
     - name: deb http://debmon.org/debmon debmon-jessie main

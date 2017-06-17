@@ -49,7 +49,7 @@ install netaddr from pip:
 Install latest stable (or backports) Kernel:
   pkg.latest:
 {% if grains['osfinger'] == "Debian-8" and salt['pillar.get']('backports_kernel') == true %}
-    - fromrepo: jessie-backports
+    - fromrepo: {{ grains['oscodename'] }}-backports
 {% endif %}
     - pkgs:
       - linux-image-amd64
