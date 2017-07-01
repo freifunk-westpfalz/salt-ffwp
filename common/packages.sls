@@ -35,6 +35,7 @@ install common packages:
       - python-pip
       - ncdu
       - vnstat
+      - python3-pip
       - icinga2
       - nagios-plugins
       - nagios-plugins-basic

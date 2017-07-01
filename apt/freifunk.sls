@@ -2,8 +2,10 @@
 add Debian Freifunk repos:
   pkgrepo.managed:
     - names:
+{% if grains['oscodename'] == 'jessie' %}
       - deb [arch=amd64] https://debian.draic.info/ wheezy main
       - deb-src https://debian.draic.info/ wheezy main
+{% endif %}
       - deb https://repo.universe-factory.net/debian/ sid main:
         - keyserver: pool.sks-keyservers.net
         - keyid: 16EF3F64CB201D9C

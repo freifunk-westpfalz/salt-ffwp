@@ -1,4 +1,4 @@
-{% if grains['os'] == 'Debian' %}
+{% if grains['os'] == 'Debian' and grains['oscodename'] == 'jessie' %}
 Debian Bird Repo:
   pkgrepo.managed:
     - name: deb http://bird.network.cz/debian/ {{ grains['oscodename'] }} main

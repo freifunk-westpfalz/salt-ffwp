@@ -1,3 +1,7 @@
-Package: *
+Package: batctl
+Pin: origin repo.universe-factory.net
+Pin-Priority: 900
+
+Package: batman-adv-dkms
 Pin: origin repo.universe-factory.net
 Pin-Priority: 900
