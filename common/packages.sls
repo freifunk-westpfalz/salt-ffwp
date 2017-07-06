@@ -33,6 +33,7 @@ install common packages:
       - bridge-utils
       - ethtool
       - python-pip
+      - python-netaddr
       - ncdu
       - vnstat
       - python3-pip

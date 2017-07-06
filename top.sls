@@ -21,6 +21,7 @@ base:
     - gw
   'bgp*':
     - common.telegraf
+    - network.interfaces_gre_ffrl
   'map.freifunk-westpfalz.de':
     - sysctl.hightraffic
     - batman
