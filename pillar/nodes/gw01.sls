@@ -23,6 +23,7 @@ network:
       v4_network: 10.198.120.141/31
       v6_network: 2a03:2260:100d:ff06::2/64
       v6_linklocal: fe80::2/64
+      ospf: true
   firewall:
     input:
       policy: DROP
