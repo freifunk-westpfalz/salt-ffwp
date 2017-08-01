@@ -1,0 +1,39 @@
+{# ToDo: auslagern und includen #}
+{% macro address(input) -%}
+    {{ salt['netaddr.address'](input) }}
+{%- endmacro -%}
+{% macro netmask(input) -%}
+    {{ salt['netaddr.netmask'](input) }}
+{%- endmacro -%}
+{% macro prefix(input) -%}
+    {{ salt['netaddr.prefix'](input) }}
+{%- endmacro -%}
+{% macro net(input) -%}
+    {{ salt['netaddr.net'](input) }}
+{%- endmacro -%}
+{% macro cidr(input) -%}
+    {{ salt['netaddr.cidr'](input) }}
+{%- endmacro -%}
+
+# This file is managed by Salt, don't make changes here - they will be overwritten.
+# GRE Tunnel zwischen BGP VMs
+# - Die Konfigurationsdaten werden vorher vergeben und zugewiesen
+{% for gre in pillar['internal_gre'] %}
+
+# GRE Tunnel to {{gre.name}} {{ address(gre.v4_local) }})
+auto {{gre.name}}
+iface {{gre.name}} inet static
+        address {{ address(gre.v4_local) }}
+        netmask {{ netmask(gre.v4_local) }}
+        #GRE Tunnel ueber v4, wenn moeglich immer v6 nutzen, fuer v4 muesste gre_target wieder geaendert werden
+        #pre-up ip tunnel add $IFACE mode gre local {{ salt['pillar.get']('global_host_info:'~gre.gre_target~':outgoing_interface_v4') }} remote {{ salt['pillar.get']('global_host_info:'~gre.gre_target~':public_v4') }} ttl 255
+        pre-up ip -6 tunnel add $IFACE mode ip6gre remote {{ salt['pillar.get']('global_host_info:'~gre.gre_target~':public_v6') }} local {{ salt['pillar.get']('global_host_info:'~grains['id']~':public_v6') }} ttl 255
+        post-up ip link set $IFACE mtu 1400
+        post-down ip tunnel del $IFACE
+
+iface {{gre.name}} inet6 static
+        address {{ address(gre.v6_local) }}
+        netmask {{ prefix(gre.v6_local) }}
+        post-up ip address add {{gre.v6_linklocal}} dev $IFACE
+        post-down ip address del {{gre.v6_linklocal}} dev $IFACE
+{% endfor %}
