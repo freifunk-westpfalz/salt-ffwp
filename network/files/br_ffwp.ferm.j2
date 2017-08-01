@@ -1,4 +1,9 @@
 domain (ip ip6) {
+  table filter {
+    chain FORWARD {
+      interface br_ffwp proto tcp dport 25 REJECT;
+    }
+  }
   table mangle {
     chain PREROUTING {
       interface br_ffwp MARK set-xmark 0x1/0xffffffff;
