@@ -9,10 +9,10 @@ base:
     - common.userfreifunk
     - ssh.keys
     - ssh.config
-    - network.ip_rules
     - ntpd
   'firmware01.freifunk-westpfalz.de':
     - firmware
+    - network.ip_rules_freifunk
     - nginx.firmware
     - network.br_ffwp
     - batman
@@ -20,12 +20,12 @@ base:
   'gw*':
     - gw
   'bgp*':
-    - common.telegraf
-    - network.interfaces_gre_ffrl
+    - bgp
   'map.freifunk-westpfalz.de':
     - sysctl.hightraffic
     - batman
     - fastd
+    - network.ip_rules_freifunk
     - network.br_ffwp
     - nginx.map
     - map

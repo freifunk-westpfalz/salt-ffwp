@@ -1,7 +1,7 @@
 include:
   - sysctl.forwarding
   - sysctl.hightraffic
-  - network.ip_rules
+  - network.ip_rules_freifunk
   - gw.rc_local
   - network.interfaces_direct
   - network.br_ffwp
