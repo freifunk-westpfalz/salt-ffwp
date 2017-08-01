@@ -16,7 +16,6 @@ place gw {{bird}}.conf:
         network: {{ pillar['network'] }}
         ffwp: {{ pillar['ffwp'] }}
     - check_cmd: {{bird}} -p -c
-    -
 
 service {{bird}}:
   service.running:

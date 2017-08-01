@@ -11,7 +11,7 @@
 #
 # By default this script does nothing.
 
-#verhindert dass Packete an private IP Ranges über default Route (eth0) gehen
+#verhindert dass Packete an private IP Ranges ueber default Route (eth0) gehen
 #blocke private Adressbereiche (RFC1918)
 /sbin/ip -4 route add unreachable 10.0.0.0/8 table main || true
 /sbin/ip -4 route add unreachable 172.16.0.0/12 table main || true
@@ -45,8 +45,8 @@
 /sbin/ip -4 rule add from all table 43 priority 50 || true
 /sbin/ip -6 rule add from all table 43 priority 50 || true
 
-#Ausgehende Pakete die über Exit sollen mit Source IP matchen und in richtige Tabelle schieben
-#sonst würden z.B ICMP Echo-Replys über normale Default Route gehen bzw in die unreachable Routen rennen
+#Ausgehende Pakete die ueber Exit sollen mit Source IP matchen und in richtige Tabelle schieben
+#sonst wuerden z.B ICMP Echo-Replys ueber normale Default Route gehen bzw in die unreachable Routen rennen
 /sbin/ip -6 rule add from {{ffwp.v6_ffrl_48}} table 42 priority 51 || true
 /sbin/ip -6 rule add from {{ffwp.v6_ula_48}} table 42 priority 52 || true
 /sbin/ip -4 rule add from 10.198.0.0/16 lookup 42 priority 51 || true
