@@ -9,7 +9,6 @@ base:
     - common.userfreifunk
     - ssh.keys
     - ssh.config
-    - ntpd
   'firmware01.freifunk-westpfalz.de':
     - firmware
     - network.ip_rules_freifunk
@@ -17,8 +16,10 @@ base:
     - network.br_ffwp
     - batman
     - fastd
+    - ntpd
   'gw*':
     - gw
+    - ntpd
   'bgp*':
     - bgp
   'map.freifunk-westpfalz.de':
@@ -29,5 +30,6 @@ base:
     - network.br_ffwp
     - nginx.map
     - map
+    - ntpd
   'web00.freifunk-westpfalz.de':
     - nginx.host04-reverse
