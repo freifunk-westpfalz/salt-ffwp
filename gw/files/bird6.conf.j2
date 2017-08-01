@@ -68,8 +68,8 @@ protocol direct ffwp_bridge {
         table freifunk;
 }
 
-#Alles inkl Default Routen von OSPF übernehem in Bird Main Tabelle
-#Eigene Netze über OSPF propagieren
+#Alles inkl Default Routen von OSPF uebernehem in Bird Main Tabelle
+#Eigene Netze ueber OSPF propagieren
 protocol ospf IGP {
   area 0 {
          interface "ffwp_*";
@@ -87,7 +87,7 @@ protocol ospf IGP {
 #Schreibe alles von Bird Freifunk Tabelle in Kernel Tabelle Freifunk (inkl. Default Routen)
 protocol kernel kernel_freifunk {
         scan time 10;
-        #Auch Device Routen in Tabelle eintragen da benötigt und durch rules kein kontakt zur Main Routing Tabelle
+        #Auch Device Routen in Tabelle eintragen da benoetigt und durch rules kein kontakt zur Main Routing Tabelle
         device routes;
         import none;
         #Source Adresse umschreiben? Filtern?
@@ -99,7 +99,7 @@ protocol kernel kernel_freifunk {
 #Schreibe alles bis auf Default Routen von Bird interior Tabelle in Main Kernel Tabelle
 protocol kernel kernel_interior {
         scan time 10;
-        #Auch Device Routen in Tabelle eintragen da benötigt und durch rules kein kontakt zur Main Routing Tabelle
+        #Auch Device Routen in Tabelle eintragen da benoetigt und durch rules kein kontakt zur Main Routing Tabelle
         device routes;
         import none;
         #Source Adresse umschreiben? Filtern?
