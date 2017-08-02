@@ -5,6 +5,13 @@ install isc-dhcp-server:
   pkg.installed:
     - name: isc-dhcp-server
 
+{% if grains['os'] == 'Debian' and grains['oscodename'] == 'stretch' %}
+/etc/default/isc-dhcp-server:
+  file.managed:
+    - source: salt://dhcp_server/files/isc-dhcp-server_default.j2
+    - template: jinja
+{% endif %}
+
 place dhcpd.conf:
   file.managed:
     - name: /etc/dhcp/dhcpd.conf
