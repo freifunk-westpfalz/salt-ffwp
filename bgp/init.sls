@@ -2,6 +2,7 @@ include:
   - common.telegraf
   - sysctl.forwarding
   - sysctl.hightraffic
+  - bgp.ferm
   - bgp.ip_rules_bgp
   - bgp.rc_local
   - network.interfaces_gre_ffrl
