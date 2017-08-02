@@ -4,7 +4,8 @@ hide mac addresses yes;
 
 interface "fastd_{{ name }}";
 
-method "aes128-ctr+umac";
+#AES broken in Debian 9 https://projects.universe-factory.net/issues/245
+#method "aes128-ctr+umac";
 method "salsa2012+umac";
 method "null+salsa2012+umac";
 
