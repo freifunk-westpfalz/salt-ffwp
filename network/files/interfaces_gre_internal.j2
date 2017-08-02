@@ -14,10 +14,10 @@
 {% macro cidr(input) -%}
     {{ salt['netaddr.cidr'](input) }}
 {%- endmacro -%}
-
 # This file is managed by Salt, don't make changes here - they will be overwritten.
 # GRE Tunnel zwischen BGP VMs
 # - Die Konfigurationsdaten werden vorher vergeben und zugewiesen
+{% if pillar['internal_gre'] is defined -%}
 {% for gre in pillar['internal_gre'] %}
 
 # GRE Tunnel to {{gre.name}} {{ address(gre.v4_local) }})
@@ -37,3 +37,4 @@ iface {{gre.name}} inet6 static
         post-up ip address add {{gre.v6_linklocal}} dev $IFACE
         post-down ip address del {{gre.v6_linklocal}} dev $IFACE
 {% endfor %}
+{%- endif -%}
