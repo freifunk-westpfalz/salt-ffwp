@@ -14,8 +14,9 @@ place gw {{bird}}.conf:
     - template: jinja
     - context:
         network: {{ pillar['network'] }}
-        ffwp: {{ pillar['ffwp'] }}
-    - check_cmd: {{bird}} -p -c
+        ffwp: {{ pillar['ffwp'] }}#
+        internal_gre: {{ pillar['internal_gre'] }}
+#    - check_cmd: {{bird}} -p -c
 
 service {{bird}}:
   service.running:

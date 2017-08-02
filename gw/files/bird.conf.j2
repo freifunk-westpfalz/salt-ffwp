@@ -61,8 +61,20 @@ protocol direct ffwp_bridge {
 #Eigene Netze ueber OSPF propagieren
 protocol ospf IGP {
   area 0 {
-        interface "ffwp_*";
-	interface "eth1";
+  {% if  internal_gre is defined -%}
+  {% for host in internal_gre -%}
+  {% if  host.ospf -%}
+  interface "{{ host.name }}";
+  {% endif -%}
+  {% endfor -%}
+  {% endif -%}
+  {% if  network.interfaces_direct is defined -%}
+  {% for host in network.interfaces_direct -%}
+  {% if  host.ospf -%}
+  interface "{{ host.interface }}";
+  {% endif -%}
+  {% endfor -%}
+  {% endif -%}
 	#Clientnetz als ganzes
 	stubnet {{ net(network.br_ffwp.v4_network) }};
 	#Subnetz vom GW?!?

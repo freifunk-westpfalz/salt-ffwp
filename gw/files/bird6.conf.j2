@@ -72,8 +72,20 @@ protocol direct ffwp_bridge {
 #Eigene Netze ueber OSPF propagieren
 protocol ospf IGP {
   area 0 {
-         interface "ffwp_*";
-	       interface "eth1";
+         {% if  internal_gre is defined -%}
+         {% for host in internal_gre -%}
+         {% if  host.ospf -%}
+         interface "{{ host.name }}";
+         {% endif -%}
+         {% endfor -%}
+         {% endif -%}
+         {% if  network.interfaces_direct is defined -%}
+         {% for host in network.interfaces_direct -%}
+         {% if  host.ospf -%}
+         interface "{{ host.interface }}";
+         {% endif -%}
+         {% endfor -%}
+         {% endif -%}
 	       #Public Clientnetz
 	       stubnet {{ net([ffwp.v6_public_prefix, network.br_ffwp.v6_suffix] | join) }};
          stubnet {{ net([ffwp.v6_ula_prefix, network.br_ffwp.v6_suffix] | join) }};
