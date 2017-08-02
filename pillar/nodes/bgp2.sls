@@ -12,6 +12,8 @@ network:
     #TODO: ggf. /28? (Stubnet bei OSPF beachten)
     v4: 10.198.192.17/32
     v6: 2a03:2260:100d:0200::1/56
+  traffic_input_interfaces:
+    - int_bgp2togw02
   firewall:
     input:
       policy: DROP

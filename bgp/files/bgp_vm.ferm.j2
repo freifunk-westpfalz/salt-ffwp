@@ -1,0 +1,43 @@
+{# ToDo: auslagern und includen #}
+{% macro address(input) -%}
+    {{ salt['netaddr.address'](input) }}
+{%- endmacro -%}
+{% macro netmask(input) -%}
+    {{ salt['netaddr.netmask'](input) }}
+{%- endmacro -%}
+{% macro prefix(input) -%}
+    {{ salt['netaddr.prefix'](input) }}
+{%- endmacro -%}
+{% macro net(input) -%}
+    {{ salt['netaddr.net'](input) }}
+{%- endmacro -%}
+{% macro cidr(input) -%}
+    {{ salt['netaddr.cidr'](input) }}
+{%- endmacro -%}
+
+domain (ip ip6) {
+  table filter {
+    chain FORWARD {
+      {% for interface in network.traffic_input_interfaces -%}
+      interface {{ interface }} outerface ffrl+ proto tcp tcp-flags (SYN RST) SYN TCPMSS clamp-mss-to-pmtu;
+      interface ffrl+ outerface {{ interface }} proto tcp tcp-flags (SYN RST) SYN TCPMSS clamp-mss-to-pmtu;
+      {% endfor -%}
+    }
+  }
+  table nat {
+    chain POSTROUTING {
+      outerface ffrl+ saddr {{ ffwp.v4_network }} SNAT to {{ address(network.exit.v4) }};
+    }
+  }
+  table mangle {
+    chain PREROUTING {
+      {% for interface in network.traffic_input_interfaces -%}
+      interface {{ interface }} MARK set-xmark 0x1/0xffffffff;
+      {% endfor -%}
+#     interface icvpn+ MARK set-xmark 0x2/0xffffffff;
+    }
+    chain POSTROUTING {
+#    proto (tcp udp) dport 53 MARK set-xmark 0x1/0xffffffff;
+    }
+  }
+}
