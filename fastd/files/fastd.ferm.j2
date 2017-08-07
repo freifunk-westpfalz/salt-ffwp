@@ -2,7 +2,9 @@ domain (ip ip6) {
   table filter {
     chain INPUT {
 {% for instance in pillar['fastd'] -%}
-{% if instance.type == "server" %}
+{% if instance.type == "server" -%}
+      interface br_ffwp daddr {{ salt['pillar.get']('global_host_info:'~grains.id~':outgoing_interface_v4') }} proto udp dport {{ instance.port }} REJECT;
+      interface br_ffwp daddr {{ salt['pillar.get']('global_host_info:'~grains.id~':public_v6') }} proto udp dport {{ instance.port }} REJECT;
       proto udp dport {{ instance.port }} ACCEPT;
 {% endif-%}
 {% endfor -%}

@@ -10,7 +10,6 @@ ffwp:
   v6_public_prefix: "2a03:2260:100d:0000:"
   search_domain: ffwp.info
 
-#TODO: ggf outgoing_interface_v4 wieder rausschmeissen
 global_host_info:
   gw01.freifunk-westpfalz.de:
     public_v4: 78.46.88.72

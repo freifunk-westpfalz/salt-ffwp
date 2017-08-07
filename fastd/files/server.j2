@@ -11,7 +11,7 @@ method "null+salsa2012+umac";
 method "null";
 
 bind [{{ salt['pillar.get']('global_host_info:'~grains.id~':public_v6') }}]:{{ port }};
-bind {{ salt['pillar.get']('global_host_info:'~grains.id~':public_v4') }}:{{ port }};
+bind {{ salt['pillar.get']('global_host_info:'~grains.id~':outgoing_interface_v4') }}:{{ port }};
 
 secret "{{ secret }}";
 mtu {{ mtu }};

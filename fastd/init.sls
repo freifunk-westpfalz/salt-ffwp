@@ -62,5 +62,7 @@ place /etc/ferm.d/fastd.conf:
     - group: root
     - mode: 644
     - template: jinja
+    - context:
+        ffwp: {{ pillar['ffwp'] }}
     - watch_in:
       - service: service ferm
