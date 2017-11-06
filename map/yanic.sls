@@ -8,9 +8,9 @@ create /var/freifunk/yanic/data:
     - group: root
     - makedirs: true
 
-create /var/lib/collector:
+create /var/lib/yanic:
   file.directory:
-    - name: /var/lib/collector
+    - name: /var/lib/yanic
     - user: freifunk
     - group: root
     - makedirs: true
