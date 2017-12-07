@@ -47,14 +47,14 @@ create influxdbuser admin:
     - admin: true
 {% endif %}
 
-{% for user in ['grafana','yanic','telegraf','icinga','ext_measurement'] %}
+{% for user in ['grafana','yanic','telegraf','ext_measurement'] %}
 create influxdbuser {{ user }}:
   influxdb_user.present:
     - name: {{ user }}
     - password: {{ salt['pillar.get']('influxdbuser.'~user~'.password') }}
 {% endfor %}
 
-{% for db in ['ffwp','ffwp_telegraf','ffwp_icinga','ffwp_ext_measurement_ping'] %}
+{% for db in ['ffwp','ffwp_telegraf','ffwp_ext_measurement_ping'] %}
 create influxdb {{ db }}:
   influxdb_database.present:
     - name: {{ db }}
@@ -72,13 +72,6 @@ set permissions for influxdbuser yanic for db ffwp:
     - name: influxdb.grant_privilege
     - database: ffwp
     - username: yanic
-    - privilege: all
-
-set permissions for influxdbuser icinga for db ffwp_icinga:
-  module.run:
-    - name: influxdb.grant_privilege
-    - database: ffwp_icinga
-    - username: icinga
     - privilege: all
 
 set permissions for influxdbuser telegraf for db ffwp_telegraf:
