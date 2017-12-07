@@ -317,7 +317,7 @@ template bgp internal {
 {% for host in internal_gre -%}
 {% if  host.ibgp -%}
 protocol bgp {{ host.name }} from internal {
-  neighbor {{ address(host.v6_remote) }} as {{ ffwp.as_number }};
+  neighbor {{ salt['pillar.get']('global_host_info:'~host.gre_target~':internal_v6') }} as {{ ffwp.as_number }};
 };
 {% endif %}
 {% endfor %}
