@@ -15,7 +15,9 @@ place gw {{bird}}.conf:
     - context:
         network: {{ pillar['network'] }}
         ffwp: {{ pillar['ffwp'] }}#
+        {% if  pillar['internal_gre'] is defined -%}
         internal_gre: {{ pillar['internal_gre'] }}
+        {%endif%}
 #    - check_cmd: {{bird}} -p -c
 
 service {{bird}}:
