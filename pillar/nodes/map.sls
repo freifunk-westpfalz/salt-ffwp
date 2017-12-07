@@ -128,22 +128,3 @@ influxdbuser.yanic.password: |
   8pss5QTrdE3nQORKl5bsD3P70N7sejZqNffOdVTyo4o=
   =KXE4
   -----END PGP MESSAGE-----
-
-influxdbuser.icinga.password: |
-  -----BEGIN PGP MESSAGE-----
-
-  hQIMAxD9NgfAXz3WARAArAt7U/GFpL+2XVr3kREkCqE7Eia2DAJqbGn0THoFUvCB
-  LF4saGXSKuemFiRvBjyz+R74edu2F1Jip3SkowSHA0vDPE0xa39unnzNyXGiX0LX
-  Nv91ALuFuQGw6SWZTX4rF2ASmJpv/GfjaKqFLhqFI1ZbpW+zIhz/qrZs9aLwCpGE
-  355SQjcWL0rqtlHYs+1U9/qpurrnss7pzzYj7QeFTz1O35JeE6k50iZrsDFfcPiW
-  1RESNqYBAakYMOFUGsXWcifb6HVUoZCAbEHImOux7TvS+c41LRhA4yHRf97VyrlU
-  hW4RyCJxC2oClkp5D9qMIQBI5np6Y/u6B8R0OGtjqZsS04D6wCR06te0+uSi1VTo
-  Q0uNCvg0+c1SK2Kfb7MNGetzEXM/B8YUyJ7PllzIOwv3OQ6qC6FIloK5XIPBSO/i
-  +rgi8AUxIa0em4WvoQPqml1nvkZMPDVOLj4nlpfCu1t5EsF2eR5OFpUeHt/mym6b
-  7BZZbFZPz+vRkVcF5Th+gwNmpmxj+07HeZKbT2xFbqmEjHAHgOrpH//TQDT0s1YT
-  gsgkCnKGps/oMeFIeV2VMurebEQCIwW8Ss79jCs8YoYE/Tehi86BmyK3kTQXeIgD
-  u8k5exK4IMSqFprHiJdeyn0OvNKetovakS9K61H5ZDqBxfYgH+GvDOtIHo4q3arS
-  TwF26UpSicY1Pop8cejbUDjx8+zYKdp8pPQL+SWet2Ll8DzVaagUqs36TeyJDnrP
-  yagVc07bDCLYBrUtY553rAg3Yi0RKfzfX0wTMNAry5M=
-  =WMvk
-  -----END PGP MESSAGE-----

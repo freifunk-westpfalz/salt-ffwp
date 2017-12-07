@@ -37,12 +37,6 @@ install common packages:
       - ncdu
       - vnstat
       - python3-pip
-      - icinga2
-      - nagios-plugins
-      - nagios-plugins-basic
-      - nagios-plugins-common
-      - nagios-plugins-contrib
-      - nagios-plugins-standard
 
 install netaddr from pip:
   pip.installed:

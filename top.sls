@@ -3,7 +3,6 @@ base:
     - apt
     - apt.debian
     - apt.freifunk
-    - apt.icinga2
     - common.packages
     - common.unwanted
     - common.userfreifunk
