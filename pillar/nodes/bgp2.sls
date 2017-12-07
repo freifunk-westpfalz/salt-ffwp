@@ -6,6 +6,9 @@ ssh_port: 22
 git_name: bgp2
 
 network:
+  uplink_ifs:
+    - eth0
+    - eth1
   exit:
     v4: 185.66.194.19/32
   internal:

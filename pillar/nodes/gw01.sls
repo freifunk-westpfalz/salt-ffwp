@@ -15,6 +15,8 @@ respondd:
   fastd_instance: fastd_1406_01
 
 network:
+  uplink_ifs:
+    - eth0
   br_ffwp:
     v4_network: 10.198.8.1/16
     v6_suffix: cafe::1/64

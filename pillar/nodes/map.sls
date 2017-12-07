@@ -6,6 +6,8 @@ ssh_port: 22153
 git_name: map
 
 network:
+  uplink_ifs:
+    - eth0
   br_ffwp:
     v4_network: 10.198.0.3/16
     v6_suffix: beef::3/64

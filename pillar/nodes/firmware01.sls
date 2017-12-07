@@ -6,6 +6,8 @@ ssh_port: 22151
 git_name: firmware01
 
 network:
+  uplink_ifs:
+    - eth0
   br_ffwp:
     v4_network: 10.198.0.2/16
     v6_suffix: beef::1/64
