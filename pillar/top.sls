@@ -13,6 +13,10 @@ base:
     - nodes.gw01
   'gw02.freifunk-westpfalz.de':
     - nodes.gw02
+  'gw03.freifunk-westpfalz.de':
+    - nodes.gw03
+  'gw04.freifunk-westpfalz.de':
+    - nodes.gw04
   'bgp1.freifunk-westpfalz.de':
     - nodes.bgp1
   'bgp2.freifunk-westpfalz.de':
