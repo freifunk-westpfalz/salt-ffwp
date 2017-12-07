@@ -17,6 +17,10 @@
 
 domain (ip ip6) {
   table filter {
+    chain INPUT {
+      proto tcp dport 179 ACCEPT;
+      proto tcp sport 179 ACCEPT;
+    }
     chain FORWARD {
       {% for interface in network.traffic_input_interfaces -%}
       interface {{ interface }} outerface ffrl+ proto tcp tcp-flags (SYN RST) SYN TCPMSS clamp-mss-to-pmtu;
