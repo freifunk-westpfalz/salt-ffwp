@@ -43,10 +43,10 @@ meshviewer_yarn_install:
 
 meshviewer_install_config:
   file.managed:
-    - name: /home/freifunk/meshviewer.git/config.json
+    - name: /home/freifunk/meshviewer.git/config.js
     - user: www-data
     - group: www-data
-    - source: salt://map/files/config.json.j2
+    - source: salt://map/files/config.js.j2
     - template: jinja
     - require:
       - git: clone ffrgb meshviewer

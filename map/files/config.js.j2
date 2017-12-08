@@ -1,0 +1,90 @@
+module.exports = function () {
+  return {
+    // Variables are NODE_ID and NODE_NAME (only a-z0-9\- other chars are replaced with _)
+    'nodeInfos': [
+      {
+        'name': 'Clientstatistik',
+        'href': 'https://stats.freifunk-westpfalz.de/dashboard/db/node?orgId=1&var-knoten={NODE_ID}',
+        'image': 'https://stats.freifunk-westpfalz.de/render/dashboard-solo/db/node?orgId=1&var-knoten={NODE_ID}&panelId=2&from=now-1d&theme=light&width=650&height=350&tz=UTC%2B02%3A00',
+        'title': 'Knoten {NODE_ID} - weiteren Statistiken'
+      },
+      {
+        'name': 'Trafficstatistik',
+        'href': 'https://stats.freifunk-westpfalz.de/dashboard/db/node?orgId=1&var-knoten={NODE_ID}/',
+        'image': 'https://stats.freifunk-westpfalz.de/render/dashboard-solo/db/node?orgId=1&var-knoten={NODE_ID}&panelId=3&from=now-1d&theme=light&width=650&height=350&tz=UTC%2B02%3A00',
+        'title': 'Knoten {NODE_ID} - weiteren Statistiken'
+      }
+    ],
+    'globalInfos': [
+      {
+        'name': 'Statistik',
+        'href': 'https://stats.freifunk-westpfalz.de/dashboard/db/freifunk-ffwp-global?orgId=1',
+        'image': 'https://stats.freifunk-westpfalz.de/render/dashboard-solo/db/freifunk-ffwp-global?panelId=6&orgId=1&from=now-1y&var-INTERVAL=1d&theme=light&width=600&height=350&tz=UTC%2B02%3A00',
+        'title': 'Jahresstatistik - weiteren Statistiken'
+      }
+    ],
+    // Array of data provider are supported
+    'dataPath': [
+      'https://map.freifunk-westpfalz.de/data/'
+    ],
+    'siteName': 'Freifunk Westpfalz',
+    'maxAge': 10,
+    'contact': false,
+    'hardwareUsage': true,
+    'mapLayers': [
+      {
+        'name': 'Freifunk Westpfalz',
+        'url': 'https://tiles.freifunk-westpfalz.de/{z}/{x}/{y}.png',
+        'config': {
+          'maxZoom': 20,
+          'subdomains': '1234',
+          'attribution': '<a href="http://www.openmaptiles.org/" target="_blank">&copy; OpenMapTiles</a> <a href="http://www.openstreetmap.org/about/" target="_blank">&copy; OpenStreetMap contributors</a>',
+          'start': 6
+        }
+      },
+      {
+        'name': 'OpenStreetMap.HOT',
+        'url': 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+        'config': {
+          'maxZoom': 19,
+          'attribution': '&copy; Openstreetmap France | &copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>'
+        }
+      },
+      {
+        'name': 'OpenTopoMap',
+        'url': '//{s}.tile.opentopomap.org/{z}/{x}/{y}.png',
+        'config': {
+          'maxZoom': 17,
+          'attribution': 'Map data: {attribution.OpenStreetMap}, <a href=\"http://viewfinderpanoramas.org\">SRTM</a> | Map style: &copy; <a href=\"https://opentopomap.org\">OpenTopoMap</a> (<a href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC-BY-SA</a>)'
+        }
+      },
+      {
+        'name': 'Esri.WorldImagery',
+        'url': '//server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+        'config': {
+          'maxZoom': 19,
+          'attribution': 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        }
+      }
+    ],
+    // Set a visible frame
+    'fixedCenter': [
+      // Northwest
+      [
+        49.692508,
+        6.856842
+      ],
+      // Southeast
+      [
+        49.103545,
+        8.492432
+      ]
+    ],
+    'siteNames': [
+      {
+        'site': 'ffwp',
+        'name': 'Westpfalz'
+      }
+    ]
+  };
+};
