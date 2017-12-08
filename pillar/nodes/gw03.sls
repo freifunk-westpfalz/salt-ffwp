@@ -5,15 +5,6 @@ backports_kernel: false
 ssh_port: 22100
 git_name: gw03
 
-respondd:
-  location:
-    latitude: 51.2672634
-    longitude: 6.8140421
-  #batman mac
-  mac:  FE:F8:FF:03:00:00
-  node_id: fef8ff030000
-  fastd_instance: fastd_1406_01
-
 network:
   uplink_ifs:
     - ens18

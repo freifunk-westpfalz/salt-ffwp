@@ -12,4 +12,4 @@ include:
   - unbound
   - fastd
   - gw.stats
-  - gw.respondd
+  - gw.mesh-announce

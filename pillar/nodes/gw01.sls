@@ -5,15 +5,6 @@ backports_kernel: true
 ssh_port: 42228
 git_name: gw01
 
-respondd:
-  location:
-    latitude: 50.478206
-    longitude: 12.335986
-  #batman mac
-  mac: FE:F8:FF:01:00:00
-  node_id: fef8ff010000
-  fastd_instance: fastd_1406_01
-
 network:
   uplink_ifs:
     - eth0
