@@ -37,6 +37,7 @@ install common packages:
       - ncdu
       - vnstat
       - python3-pip
+      - jq
 
 install netaddr from pip:
   pip.installed:
