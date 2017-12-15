@@ -1,18 +1,18 @@
 module.exports = function () {
   return {
-    // Variables are NODE_ID and NODE_NAME (only a-z0-9\- other chars are replaced with _)
+    // Variables are NODE_NAME and NODE_NAME (only a-z0-9\- other chars are replaced with _)
     'nodeInfos': [
       {
         'name': 'Clientstatistik',
-        'href': 'https://stats.freifunk-westpfalz.de/dashboard/db/node?orgId=1&var-knoten={NODE_ID}',
-        'image': 'https://stats.freifunk-westpfalz.de/render/dashboard-solo/db/node?orgId=1&var-knoten={NODE_ID}&panelId=2&from=now-1d&theme=light&width=650&height=350&tz=UTC%2B02%3A00',
-        'title': 'Knoten {NODE_ID} - weiteren Statistiken'
+        'href': 'https://stats.freifunk-westpfalz.de/dashboard/db/node?orgId=1&var-knoten={NODE_NAME}',
+        'image': 'https://stats.freifunk-westpfalz.de/render/dashboard-solo/db/node?orgId=1&var-knoten={NODE_NAME}&panelId=2&from=now-1d&theme=light&width=650&height=350&tz=UTC%2B02%3A00',
+        'title': 'Knoten {NODE_NAME} - weiteren Statistiken'
       },
       {
         'name': 'Trafficstatistik',
-        'href': 'https://stats.freifunk-westpfalz.de/dashboard/db/node?orgId=1&var-knoten={NODE_ID}/',
-        'image': 'https://stats.freifunk-westpfalz.de/render/dashboard-solo/db/node?orgId=1&var-knoten={NODE_ID}&panelId=3&from=now-1d&theme=light&width=650&height=350&tz=UTC%2B02%3A00',
-        'title': 'Knoten {NODE_ID} - weiteren Statistiken'
+        'href': 'https://stats.freifunk-westpfalz.de/dashboard/db/node?orgId=1&var-knoten={NODE_NAME}/',
+        'image': 'https://stats.freifunk-westpfalz.de/render/dashboard-solo/db/node?orgId=1&var-knoten={NODE_NAME}&panelId=3&from=now-1d&theme=light&width=650&height=350&tz=UTC%2B02%3A00',
+        'title': 'Knoten {NODE_NAME} - weiteren Statistiken'
       }
     ],
     'globalInfos': [
