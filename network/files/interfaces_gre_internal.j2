@@ -26,7 +26,7 @@ iface {{gre.name}} inet static
         address {{ address(gre.v4_local) }}
         netmask {{ netmask(gre.v4_local) }}
         #GRE Tunnel ueber v4, wenn moeglich immer v6 nutzen, fuer v4 muesste gre_target wieder geaendert werden
-        #pre-up ip tunnel add $IFACE mode gre local {{ salt['pillar.get']('global_host_info:'~gre.gre_target~':outgoing_interface_v4') }} remote {{ salt['pillar.get']('global_host_info:'~gre.gre_target~':public_v4') }} ttl 255
+        #pre-up ip tunnel add $IFACE mode gre local {{ salt['pillar.get']('global_host_info:'~grains['id']~':outgoing_interface_v4') }} remote {{ salt['pillar.get']('global_host_info:'~gre.gre_target~':public_v4') }} ttl 255
         pre-up ip -6 tunnel add $IFACE mode ip6gre remote {{ salt['pillar.get']('global_host_info:'~gre.gre_target~':public_v6') }} local {{ salt['pillar.get']('global_host_info:'~grains['id']~':public_v6') }} ttl 255
         post-up ip link set $IFACE mtu 1400
         post-down ip tunnel del $IFACE
