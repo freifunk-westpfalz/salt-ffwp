@@ -7,8 +7,7 @@ git_name: bgp2
 
 network:
   uplink_ifs:
-    - eth0
-    - eth1
+    - ens18
   exit:
     v4: 185.66.194.19/32
   internal:
@@ -16,7 +15,13 @@ network:
     v4: 10.198.192.17/32
     v6: 2a03:2260:100d:0200::1/56
   traffic_input_interfaces:
-    - int_bgp2togw02
+    - ens19
+  interfaces_direct:
+    - interface: ens19
+      v4_network: 10.198.193.14/31
+      v6_network: 2a03:2260:100d:ff07::1/64
+      v6_linklocal: fe80::1/64
+      ospf: true
   firewall:
     input:
       policy: DROP
@@ -30,7 +35,7 @@ network:
 #GRE-Einstellungen zum Freifunk Rheinland
 #+1 auf Rheinland IP = unsere IP
 ffrl_gre:
-  local_v4: 46.231.178.246
+  local_v4: 46.4.95.254
   tunnel:
     - name: fra0
       gre_target: 185.66.194.0
@@ -96,13 +101,4 @@ internal_gre:
   v6_linklocal: fe80::1/64
   v6_remote: 2a03:2260:100d:ff04::2/64
   ibgp: true
-  ospf: true
-- name: int_bgp2togw02
-  gre_target: 'gw02.freifunk-westpfalz.de'
-  v4_local: 10.198.193.14/31
-  v4_remote: 10.198.193.15/31
-  v6_local: 2a03:2260:100d:ff07::1/64
-  v6_linklocal: fe80::1/64
-  v6_remote: 2a03:2260:100d:ff07::2/64
-  ibgp: false
   ospf: true

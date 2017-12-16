@@ -7,13 +7,13 @@ git_name: gw01
 
 network:
   uplink_ifs:
-    - eth0
+    - ens3
   br_ffwp:
     v4_network: 10.198.8.1/16
     v6_suffix: cafe::1/64
   interfaces_direct:
-    - interface: eth1
-      v4_network: 10.198.120.141/31
+    - interface: ens12
+      v4_network: 10.198.193.13/31
       v6_network: 2a03:2260:100d:ff06::2/64
       v6_linklocal: fe80::2/64
       ospf: true

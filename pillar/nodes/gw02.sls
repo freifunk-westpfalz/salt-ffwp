@@ -7,11 +7,16 @@ git_name: gw02
 
 network:
   uplink_ifs:
-    - eth0
-    - eth1
+    - ens18
   br_ffwp:
     v4_network: 10.198.16.1/16
     v6_suffix: cafe::2/64
+  interfaces_direct:
+    - interface: ens19
+      v4_network: 10.198.193.15/31
+      v6_network: 2a03:2260:100d:ff07::2/64
+      v6_linklocal: fe80::2/64
+      ospf: true
   firewall:
     input:
       policy: DROP
@@ -65,14 +70,3 @@ dhcp_server:
     - 10.198.8.1
     - 10.198.24.1
     - 10.198.32.1
-
-internal_gre:
-  - name: int_gw02tobgp2
-    gre_target: 'bgp2.freifunk-westpfalz.de'
-    v4_local: 10.198.193.15/31
-    v4_remote: 10.198.193.14/31
-    v6_local: 2a03:2260:100d:ff07::2/64
-    v6_linklocal: fe80::2/64
-    v6_remote: 2a03:2260:100d:ff07::1/64
-    ibgp: false
-    ospf: true
