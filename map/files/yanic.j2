@@ -1,7 +1,6 @@
 # This is the config file for Yanic written in "Tom's Obvious, Minimal Language."
 # syntax: https://github.com/toml-lang/toml
-# (if you need somethink multiple times, checkout out the [[table]] section)
-
+# (if you need somethink multiple times, checkout out the [[array of table]] section)
 # Send respondd request to update information
 [respondd]
 enable           = true
@@ -27,7 +26,6 @@ webroot = "/var/www/html/meshviewer"
 
 
 [nodes]
-enable        = true
 # Cache file
 # a json file to cache all data collected directly from respondd
 state_path    = "/var/lib/yanic/state.json"
@@ -114,7 +112,7 @@ path = "/var/freifunk/yanic/data/nodelist.json"
 [database]
 # this will send delete commands to the database to prune data
 # which is older than:
-delete_after    = "365d"
+delete_after    = "90d"
 # how often run the cleaning
 delete_interval = "1h"
 
@@ -138,7 +136,7 @@ password = "{{ pillar['influxdbuser.yanic.password'] }}"
 # Tagging of the data (optional)
 [database.connection.influxdb.tags]
 # Tags used by Yanic would override the tags from this config
-# nodeid, hostname, owner, model and firmware are tags which are already used
+# nodeid, hostname, owner, model, firmware_base, firmware_release,frequency11g and frequency11a are tags which are already used
 #tagname1 = "tagvalue 1"
 # some usefull e.g.:
 #system   = "productive"
