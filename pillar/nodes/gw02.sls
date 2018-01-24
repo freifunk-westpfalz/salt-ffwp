@@ -31,6 +31,7 @@ batman:
   gateway: true
   bandwidth: 96mbit/96mbit
   mac: FE:F8:FF:02:00:00
+  hop_penalty: 60
 
 fastd:
   - name: "1406_01"
