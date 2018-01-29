@@ -38,6 +38,7 @@ fastd:
     type: server
     mtu: 1406
     port: 10000
+    peer_limit: 200
     mac: FE:F8:FF:01:01:00
     secret: |
       -----BEGIN PGP MESSAGE-----
