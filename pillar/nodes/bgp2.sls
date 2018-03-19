@@ -35,7 +35,7 @@ network:
 #GRE-Einstellungen zum Freifunk Rheinland
 #+1 auf Rheinland IP = unsere IP
 ffrl_gre:
-  local_v4: 46.4.95.254
+  local_v4: 46.4.148.29
   tunnel:
     - name: fra0
       gre_target: 185.66.194.0
