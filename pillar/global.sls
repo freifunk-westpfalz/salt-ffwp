@@ -40,11 +40,11 @@ global_host_info:
     internal_v6: 2a03:2260:100d:0200::1
     outgoing_interface_v4: 46.4.148.29
   bgp3.freifunk-westpfalz.de:
-    public_v4: 193.111.140.173
-    public_v6: 2001:4ba0:ffef:2::101
+    public_v4: 185.215.214.136
+    public_v6: 2a07:59c6:ee02:201::1
     internal_v4: 10.198.192.33
     internal_v6: 2a03:2260:100d:0300::1
-    outgoing_interface_v4: 10.0.173.101
+    outgoing_interface_v4: 185.215.214.136
   bgp4.freifunk-westpfalz.de:
     public_v4: 62.210.83.40
     public_v6: 2001:bc8:225e:1001::101
