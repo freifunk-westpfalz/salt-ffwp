@@ -15,7 +15,7 @@
     {{ salt['netaddr.cidr'](input) }}
 {%- endmacro -%}
 # This file is managed by Salt, don't make changes here - they will be overwritten.
-# GRE Tunnel zwischen BGP VMs
+# GRE Tunnel
 # - Die Konfigurationsdaten werden vorher vergeben und zugewiesen
 {% if pillar['internal_gre'] is defined -%}
 {% for gre in pillar['internal_gre'] %}
