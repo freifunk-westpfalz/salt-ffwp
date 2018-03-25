@@ -15,13 +15,7 @@ network:
     v4: 10.198.192.17/32
     v6: 2a03:2260:100d:0200::1/56
   traffic_input_interfaces:
-    - ens19
-  interfaces_direct:
-    - interface: ens19
-      v4_network: 10.198.193.14/31
-      v6_network: 2a03:2260:100d:ff07::1/64
-      v6_linklocal: fe80::1/64
-      ospf: true
+    - int_bgp2togw02
   firewall:
     input:
       policy: DROP
@@ -101,4 +95,13 @@ internal_gre:
   v6_linklocal: fe80::1/64
   v6_remote: 2a03:2260:100d:ff04::2/64
   ibgp: true
+  ospf: true
+- name: int_bgp2togw02
+  gre_target: 'gw02.freifunk-westpfalz.de'
+  v4_local: 10.198.193.14/31
+  v4_remote: 10.198.193.15/31
+  v6_local: 2a03:2260:100d:ff07::1/64
+  v6_linklocal: fe80::1/64
+  v6_remote: 2a03:2260:100d:ff07::2/64
+  ibgp: false
   ospf: true
