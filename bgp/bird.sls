@@ -17,6 +17,7 @@ place bgp {{bird}}.conf:
         ffwp: {{ pillar['ffwp'] }}
         internal_gre: {{ pillar['internal_gre'] }}
         ffrl_gre: {{ pillar['ffrl_gre'] }}
+        ffnw_gre: {{ pillar['ffnw_gre'] }}
 #    - check_cmd: {{bird}} -p -c
 
 service {{bird}}:

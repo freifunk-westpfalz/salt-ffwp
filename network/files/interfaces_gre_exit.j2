@@ -17,9 +17,6 @@
 
 # This file is managed by Salt, don't make changes here - they will be overwritten.
 
-# GRE Tunnel zum Rheinland Backbone
-# - Die Konfigurationsdaten werden vom Rheinland Backbone vergeben und zugewiesen
-
 {% for gre in pillar['ffrl_gre']['tunnel'] %}
 # GRE Tunnel to ffrl_{{gre.name}} {{ address(gre.v4_local) }}
 
@@ -37,6 +34,27 @@ iface ffrl_{{gre.name}} inet6 static
         address {{ address(gre.v6_local) }}
         netmask {{ prefix(gre.v6_local) }}
         post-up ip -6 rule add iif $IFACE table 40 priority {{ 10 + loop.index0 }}
+        pre-down ip -6 rule del iif $IFACE table 40
+
+{% endfor %}
+
+{% for gre in pillar['ffnw_gre']['tunnel'] %}
+# GRE Tunnel to ffnw_{{gre.name}} {{ address(gre.v4_local) }}
+
+auto ffnw_{{gre.name}}
+iface ffnw_{{gre.name}} inet static
+        address {{ address(gre.v4_local) }}
+        netmask {{ netmask(gre.v4_local) }}
+        pre-up ip tunnel add $IFACE mode gre local {{ pillar['ffnw_gre']['local_v4']}} remote {{ address(gre.gre_target) }} ttl 255
+        post-up ip link set $IFACE mtu 1400
+        post-down ip tunnel del $IFACE
+        post-up ip rule add iif $IFACE table 40 priority {{ 20 + loop.index0 }}
+        pre-down ip rule del iif $IFACE table 40
+
+iface ffnw_{{gre.name}} inet6 static
+        address {{ address(gre.v6_local) }}
+        netmask {{ prefix(gre.v6_local) }}
+        post-up ip -6 rule add iif $IFACE table 40 priority {{ 20 + loop.index0 }}
         pre-down ip -6 rule del iif $IFACE table 40
 
 {% endfor %}

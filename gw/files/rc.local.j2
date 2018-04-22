@@ -54,6 +54,7 @@
 #Vorsichtsmaßnamen:
 /sbin/ip -4 rule add unreachable from {{ffwp.v4_network}} priority 53 || true
 /sbin/ip -6 rule add unreachable from {{ffwp.v6_ffrl_48}} priority 53 || true
+/sbin/ip -6 rule add unreachable from {{ffwp.v6_ffnw_48}} priority 53 || true
 /sbin/ip -6 rule add unreachable from {{ffwp.v6_ula_48}} priority 54 || true
 
 

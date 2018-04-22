@@ -25,12 +25,16 @@ domain (ip ip6) {
       {% for interface in network.traffic_input_interfaces -%}
       interface {{ interface }} outerface ffrl+ proto tcp tcp-flags (SYN RST) SYN TCPMSS clamp-mss-to-pmtu;
       interface ffrl+ outerface {{ interface }} proto tcp tcp-flags (SYN RST) SYN TCPMSS clamp-mss-to-pmtu;
+      interface {{ interface }} outerface ffnw+ proto tcp tcp-flags (SYN RST) SYN TCPMSS clamp-mss-to-pmtu;
+      interface ffnw+ outerface {{ interface }} proto tcp tcp-flags (SYN RST) SYN TCPMSS clamp-mss-to-pmtu;
       {% endfor -%}
     }
   }
   table nat {
     chain POSTROUTING {
-      outerface ffrl+ saddr {{ ffwp.v4_network }} SNAT to {{ address(network.exit.v4) }};
+      outerface ffrl+ saddr {{ ffwp.v4_network }} SNAT to {{ address(ffrl_gre.exit_v4) }}; 
+      outerface ffnw+ saddr {{ ffwp.v4_network }} SNAT to {{ address(ffnw_gre.exit_v4) }};
+      
     }
   }
   table mangle {

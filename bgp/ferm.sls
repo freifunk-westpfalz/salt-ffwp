@@ -12,5 +12,8 @@ place bgp /etc/ferm.d/bgp_vm.conf:
     - context:
         network: {{ pillar['network'] }}
         ffwp: {{ pillar['ffwp'] }}
+        ffrl_gre: {{ pillar['ffrl_gre'] }}
+        ffnw_gre: {{ pillar['ffnw_gre'] }}
+
     - watch_in:
       - service: service ferm

@@ -28,7 +28,9 @@
 # By default this script does nothing.
 
 /sbin/ip -4 address add {{ network.internal.v4 }} dev lo || true
-/sbin/ip -4 address add {{ network.exit.v4 }} dev lo || true
+{% for v4_exit in network.exit.v4_all -%}
+/sbin/ip -4 address add {{ v4_exit }} dev lo || true
+{% endfor -%}
 /sbin/ip -6 address add {{ address(network.internal.v6) }}/128 dev lo || true
 
 #Statische Routen fuer ICVPN Transfernetze
@@ -80,12 +82,17 @@
 
 #Ausgehende Pakete die ueber Exit sollen mit Source IP matchen und in richtige Tabelle schieben
 #sonst wuerden z.B ICMP Echo-Replys ueber normale Default Route gehen
-/sbin/ip -4 rule add from {{ network.exit.v4 }} table 42 priority 51 || true
+{% for v4_exit in network.exit.v4_all -%}
+/sbin/ip -4 rule add from {{ v4_exit }} table 42 priority {{51 + loop.index0}} || true
+{% endfor -%}
 /sbin/ip -6 rule add from {{ ffwp.v6_ffrl_48 }} table 42 priority 51 || true
+/sbin/ip -6 rule add from {{ ffwp.v6_ffnw_48 }} table 42 priority 51 || true
+
 
 #Nochmal ganz auf Nummer sicher gehen
 /sbin/ip -4 rule add unreachable from {{ ffwp.v4_network }} priority 52 || true
 /sbin/ip -6 rule add unreachable from {{ ffwp.v6_ffrl_48 }} priority 52 || true
+/sbin/ip -6 rule add unreachable from {{ ffwp.v6_ffnw_48 }} priority 52 || true
 /sbin/ip -6 rule add unreachable from {{ ffwp.v6_ula_48 }} priority 53 || true
 
 #schicke Uplink keine Packete mit dennen er nichts anfangen kann

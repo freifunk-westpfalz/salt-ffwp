@@ -22,9 +22,12 @@ router id {{ address(network.internal.v4) }};
 table ibgp;
 table interior;
 table ffwp;
-table icvpn;
 table ffrl;
+table ffnw;
 table inetexit;
+{#
+table icvpn;
+#}
 
 {#
 roa table icvpn_roa {
@@ -38,9 +41,16 @@ function is_ffwp_ffrl_nets() {
   ];
 }
 
+function is_ffwp_ffnw_nets() {
+  return net ~ [
+  {{ffwp.v6_ffnw_48}}{48,64}
+  ];
+}
+
 function is_ffwp() {
     return net ~ [
     {{ffwp.v6_ffrl_48}}{48,64},
+    {{ffwp.v6_ffnw_48}}{48,64},
     {{ffwp.v6_ula_48}}{48,64}
     ];
 }
@@ -72,9 +82,20 @@ protocol device {
         scan time 10;
 };
 
-#Kopiere gelernte Routen aus FFRL in Main Tabelle
+#Kopiere gelernte Routen aus FFRL in (Bird) Main Tabelle
 protocol pipe pipe_main_ffrl {
   peer table ffrl;
+  #Source Adresse setzen
+  import filter {
+      if is_default() then accept;
+      reject;
+  };
+  export none;
+};
+
+#Kopiere gelernte Routen aus FFNW in (Bird) Main Tabelle
+protocol pipe pipe_main_ffnw {
+  peer table ffnw;
   #Source Adresse setzen
   import filter {
       if is_default() then accept;
@@ -94,6 +115,7 @@ protocol pipe pipe_main_inetexit {
   };
 };
 
+#Kopiere alle FFWP Routen von Bird main in Bird ffwp
 protocol pipe pipe_main_ffwp {
   peer table ffwp;
   import none;
@@ -103,6 +125,7 @@ protocol pipe pipe_main_ffwp {
   };
 };
 
+#Kopiere alle FFWP Routen von Bird interior in Bird main
 protocol pipe pipe_main_interior {
   peer table interior;
   import filter {
@@ -119,6 +142,7 @@ protocol pipe pipe_main_ibgp {
   export where !is_ffwp() && !is_default();
 };
 
+{#
 protocol pipe pipe_main_icvpn {
   peer table icvpn;
   import filter {
@@ -132,8 +156,9 @@ protocol pipe pipe_main_icvpn {
     reject;
   };
 };
+#}
 
-#IPv6 Netze die announced werden sollen
+#FFRL IPv6 Netze die announced werden sollen
 protocol static ffrl_uplink_hostroute {
     table ffrl;
     route {{ffwp.v6_ffrl_48}} reject;
@@ -141,6 +166,15 @@ protocol static ffrl_uplink_hostroute {
     route {{net(network.internal.v6)}} reject;
 }
 
+#FFNW IPv6 Netze die announced werden sollen
+protocol static ffnw_uplink_hostroute {
+    table ffnw;
+    route {{ffwp.v6_ffnw_48}} reject;
+    route {{ffwp.v6_ffnw_00_56}} reject;
+    #TODO: beachten dass vielleicht auch FFNW als internal genutzt wird
+}
+
+#Alle FFWP Netz Routen in ffwp Kernel Table schreiben
 protocol kernel kernel_ffwp {
   scan time 10;
   #Auch Device Routen in Tabelle eintragen da benoetigt und durch rules kein kontakt zur Main Routing Tabelle
@@ -255,7 +289,27 @@ template bgp ffrl_uplink {
         };
         next hop self;
         direct;
-        default bgp_local_pref 200;
+        default bgp_local_pref {{ffrl_gre.default_v6_bgp_local_pref}};
+        default bgp_med 1;
+};
+
+# Uplink ueber ff nordwest
+template bgp ffnw_uplink {
+        table ffnw;
+        local as {{ ffwp.as_number }};
+        import limit 10000;
+        import keep filtered;
+        import filter {
+          if is_default() then accept;
+          reject;
+        };
+        export filter {
+          if is_ffwp_ffnw_nets() then accept;
+          reject;
+        };
+        next hop self;
+        direct;
+        default bgp_local_pref {{ffnw_gre.default_v6_bgp_local_pref}};
         default bgp_med 1;
 };
 
@@ -329,11 +383,21 @@ protocol bgp ffrl_{{gre.name}} from ffrl_uplink {
   source address {{ address(gre.v6_local) }};
   neighbor {{ address(gre.v6_remote) }} as 201701;
 {% if loop.first %}
-  default bgp_local_pref 201;
+  default bgp_local_pref {{ffrl_gre.default_v6_bgp_local_pref +1}};
   default bgp_med 1;
 {% endif %}
 };
+{% endfor %}
 
+{% for gre in ffnw_gre.tunnel -%}
+protocol bgp ffnw_{{gre.name}} from ffnw_uplink {
+  source address {{ address(gre.v6_local) }};
+  neighbor {{ address(gre.v6_remote) }}%ffnw_{{gre.name}} as 206313;
+{% if loop.first %}
+  default bgp_local_pref {{ffnw_gre.default_v6_bgp_local_pref +1}};
+  default bgp_med 1;
+{% endif %}
+};
 {% endfor %}
 
 {#
