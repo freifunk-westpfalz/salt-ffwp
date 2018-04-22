@@ -45,11 +45,15 @@ offline_after = "10m"
 # For each output format there can be set different filters
 #[nodes.output.example.filter]
 #
-# Set to false, if you want the json files to contain the owner information
+# WARNING: if it is not set, it will publish contact information of other persons
+# Set to true, if you did not want the json files to contain the owner information
 #no_owner = true
 #
 # List of nodeids of nodes that should be filtered out, so they won't appear in output
 #blacklist = ["00112233445566", "1337f0badead"]
+#
+# List of site_codes of nodes that should be included in the output
+#sites = ["ffwp"]
 #
 # set has_location to true if you want to include only nodes that have geo-coordinates set
 # (setting this to false has no sensible effect, unless you'd want to hide nodes that have coordinates)
@@ -71,6 +75,7 @@ path = "/var/freifunk/yanic/data/meshviewer.json"
 #[nodes.output.meshviewer-ffrgb.filter]
 #no_owner = false
 #blacklist = ["00112233445566", "1337f0badead"]
+#sites = ["ffwp"]
 #has_location = true
 
 #[nodes.output.meshviewer-ffrgb.filter.in_area]
@@ -95,8 +100,9 @@ nodes_path = "/var/freifunk/yanic/data/nodes.json"
 # path where to store graph.json
 graph_path = "/var/freifunk/yanic/data/graph.json"
 
-#[nodes.output.meshviewer.filter]
-#no_owner = false
+[nodes.output.meshviewer.filter]
+# WARNING: if it is not set, it will publish contact information of other persons
+no_owner = true
 
 
 # definition for nodelist.json
@@ -104,8 +110,9 @@ graph_path = "/var/freifunk/yanic/data/graph.json"
 enable   = true
 path = "/var/freifunk/yanic/data/nodelist.json"
 
-#[nodes.output.nodelist.filter]
-#no_owner = false
+[nodes.output.nodelist.filter]
+# WARNING: if it is not set, it will publish contact information of other persons
+no_owner = true
 
 
 
@@ -138,14 +145,9 @@ password = "{{ pillar['influxdbuser.yanic.password'] }}"
 # Tags used by Yanic would override the tags from this config
 # nodeid, hostname, owner, model, firmware_base, firmware_release,frequency11g and frequency11a are tags which are already used
 #tagname1 = "tagvalue 1"
-# some usefull e.g.:
+# some useful e.g.:
 #system   = "productive"
 #site     = "ffhb"
-
-# Logging
-[[database.connection.logging]]
-enable   = false
-path     = "/var/log/yanic.log"
 
 # Graphite settings
 [[database.connection.graphite]]
@@ -158,3 +160,18 @@ address  = "localhost:2003"
 # then the prefix can be set to anything (including the empty string) since you
 # probably wont care much about "polluting" the namespace.
 prefix   = "freifunk"
+
+# respondd (yanic)
+# forward collected respondd package to a address
+# (e.g. to another respondd collector like a central yanic instance or hopglass)
+[[database.connection.respondd]]
+enable   = false
+# type of network to create a connection
+type     = "udp6"
+# destination address to connect/send respondd package
+address  = "stats.bremen.freifunk.net:11001"
+
+# Logging
+[[database.connection.logging]]
+enable   = false
+path     = "/var/log/yanic.log"
