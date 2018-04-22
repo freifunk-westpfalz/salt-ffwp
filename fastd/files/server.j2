@@ -5,7 +5,7 @@ hide mac addresses yes;
 interface "fastd_{{ name }}";
 
 #AES broken in Debian 9 https://projects.universe-factory.net/issues/245, AES einkommentieren wenn Fastd nicht aus backports
-method "aes128-ctr+umac";
+#method "aes128-ctr+umac";
 method "salsa2012+umac";
 method "null+salsa2012+umac";
 method "null";
