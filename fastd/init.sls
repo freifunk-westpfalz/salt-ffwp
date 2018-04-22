@@ -6,8 +6,9 @@ include:
 install fastd:
   pkg.latest:
     - name: fastd
+{% if grains['os'] == 'Debian' and grains['oscodename'] == 'stretch' %}
     - fromrepo: {{ grains['oscodename'] }}-backports
-
+{% endif %}
 {% for instance in pillar['fastd'] %}
 
 #TODO: only execute once
