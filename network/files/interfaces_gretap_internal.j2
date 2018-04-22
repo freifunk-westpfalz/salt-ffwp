@@ -1,0 +1,12 @@
+# This file is managed by Salt, don't make changes here - they will be overwritten.
+
+{% for gretap in pillar['gretap']['tunnel'] %}
+auto ffwp_{{gretap.name}}
+iface ffwp_{{gretap.name}} inet manual
+        pre-up ip link add $IFACE type gretap local {{ salt['pillar.get']('global_host_info:'~grains['id']~':outgoing_interface_v4') }} remote {{ salt['pillar.get']('global_host_info:'~gretap.target~':public_v4') }} ttl 64 dev {{ pillar['gretap']['output_if']}}
+        post-up ip link set dev $IFACE up
+        post-up batctl -m bat0 if add $IFACE
+        post-down ip link del $IFACE
+        post-down batctl -m bat0 if del $IFACE
+        mtu 1400
+{% endfor %}

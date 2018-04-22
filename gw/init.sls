@@ -5,6 +5,7 @@ include:
   - gw.rc_local
   - network.interfaces_direct
   - network.interfaces_gre_internal
+  - network.interfaces_gretap_internal
   - network.br_ffwp
   - batman
   - gw.bird
