@@ -1,12 +1,12 @@
 include:
   - apt.freifunk
+  - apt.debian
   - ferm
 
 install fastd:
   pkg.latest:
     - name: fastd
-    - require:
-      - pkgrepo: add Debian Freifunk repos
+    - fromrepo: {{ grains['oscodename'] }}-backports
 
 {% for instance in pillar['fastd'] %}
 
