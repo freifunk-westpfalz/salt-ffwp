@@ -7,32 +7,34 @@ ffwp:
   v6_ula_prefix: "fdc6:c4fe:1de4:0000:"
   v6_ffrl_48: 2a03:2260:100d::/48
   v6_ffrl_00_56: 2a03:2260:100d:0000::/56
+  v6_ffnw_48: 2a07:59c6:ec01::/48
+  v6_ffnw_00_56: 2a07:59c6:ec01:0000::/56
   v6_public_prefix: "2a03:2260:100d:0000:"
   search_domain: ffwp.info
 
 global_host_info:
   gw01.freifunk-westpfalz.de:
-    public_v4: 78.46.88.72
-    public_v6: 2a01:4f8:120:2192:affe::7
-    outgoing_interface_v4: 10.8.1.7
+    public_v4: 89.163.141.92
+    public_v6: 2001:4ba0:fffc:00f4:101::1
+    outgoing_interface_v4: 89.163.141.92
   gw02.freifunk-westpfalz.de:
     public_v4: 46.4.148.30
     public_v6: 2a01:4f8:140:81e8:46:4:148:30
     outgoing_interface_v4: 46.4.148.30
   gw03.freifunk-westpfalz.de:
-    public_v4: 193.111.140.173
-    public_v6: 2001:4ba0:ffef:2::100
-    outgoing_interface_v4: 10.0.173.100
+    public_v4: 185.215.214.138
+    public_v6: 2a07:59c6:ee02:203::1
+    outgoing_interface_v4: 185.215.214.138
   gw04.freifunk-westpfalz.de:
-    public_v4: 62.210.83.40
-    public_v6: 2001:bc8:225e:1001::100
-    outgoing_interface_v4: 10.0.40.100
+    public_v4: 185.215.214.139
+    public_v6: 2a07:59c6:ee02:204::1
+    outgoing_interface_v4: 185.215.214.139
   bgp1.freifunk-westpfalz.de:
-    public_v4: 78.46.88.72
-    public_v6: 2a01:4f8:120:2192:affe::6
+    public_v4: 89.163.141.89
+    public_v6: 2001:4ba0:fffc:00f4:100::1
     internal_v4: 10.198.192.1
     internal_v6: 2a03:2260:100d:0100::1
-    outgoing_interface_v4: 10.8.1.6
+    outgoing_interface_v4: 89.163.141.89
   bgp2.freifunk-westpfalz.de:
     public_v4: 46.4.148.29
     public_v6: 2a01:4f8:140:81e8:46:4:148:29
@@ -46,11 +48,11 @@ global_host_info:
     internal_v6: 2a03:2260:100d:0300::1
     outgoing_interface_v4: 185.215.214.136
   bgp4.freifunk-westpfalz.de:
-    public_v4: 62.210.83.40
-    public_v6: 2001:bc8:225e:1001::101
+    public_v4: 185.215.214.137
+    public_v6: 2a07:59c6:ee02:202::1
     internal_v4: 10.198.192.49
     internal_v6: 2a03:2260:100d:0400::1
-    outgoing_interface_v4: 10.0.40.101
+    outgoing_interface_v4: 185.215.214.137
 
 influxdbuser.telegraf.password: |
   -----BEGIN PGP MESSAGE-----

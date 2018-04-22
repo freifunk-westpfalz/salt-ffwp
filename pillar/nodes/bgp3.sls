@@ -9,19 +9,18 @@ network:
   uplink_ifs:
     - ens18
   exit:
-    v4: 185.66.195.18/32
+    #Alle potenziellen Exit IPs
+    v4_all:
+      # FFRL
+      - 185.66.195.18/32
+      # FFNW
+      - 185.197.132.130/32
   internal:
     #TODO: ggf. /28? (Stubnet bei OSPF beachten)
     v4: 10.198.192.33/32
     v6: 2a03:2260:100d:0300::1/56
   traffic_input_interfaces:
-    - ens19
-  interfaces_direct:
-    - interface: ens19
-      v4_network: 10.198.193.16/31
-      v6_network: 2a03:2260:100d:ff08::1/64
-      v6_linklocal: fe80::1/64
-      ospf: true
+    - int_bgp3togw03
   firewall:
     input:
       policy: DROP
@@ -32,8 +31,13 @@ network:
     prerouting:
       policy: ACCEPT
 
+#GRE-Einstellungen zum Freifunk Rheinland
+#+1 auf Rheinland IP = unsere IP
 ffrl_gre:
-  local_v4: 10.0.173.101
+  local_v4: 185.215.214.136
+  exit_v4: 185.66.195.18/32
+  default_v4_bgp_local_pref: 200
+  default_v6_bgp_local_pref: 300
   tunnel:
     - name: dus0
       gre_target: 185.66.193.0
@@ -72,6 +76,39 @@ ffrl_gre:
       v6_local: 2a03:2260:0:28b::2/64
       v6_remote: 2a03:2260:0:28b::1/64
 
+#GRE-Einstellungen zu Freifunk Nordwest
+#+1 auf Nordwest IP = unsere IP
+ffnw_gre:
+  local_v4: 185.215.214.136
+  exit_v4: 185.197.132.130/32
+  default_v4_bgp_local_pref: 300
+  default_v6_bgp_local_pref: 200
+  tunnel:
+    - name: fra
+      gre_target: 185.197.132.3
+      v4_local: 100.100.32.39/31 
+      v4_remote: 100.100.32.38/31 
+      v6_local: fe80::2/64
+      v6_remote: fe80::1/64
+    - name: ber
+      gre_target: 185.197.132.7
+      v4_local: 100.100.96.39/31 
+      v4_remote: 100.100.96.38/31 
+      v6_local: fe80::2/64
+      v6_remote: fe80::1/64
+    - name: ams_a
+      gre_target: 185.197.132.5
+      v4_local: 100.100.64.39/31 
+      v4_remote: 100.100.64.38/31 
+      v6_local: fe80::2/64
+      v6_remote: fe80::1/64
+    - name: ams_b
+      gre_target: 185.197.132.6
+      v4_local: 100.100.70.39/31 
+      v4_remote: 100.100.70.38/31 
+      v6_local: fe80::2/64
+      v6_remote: fe80::1/64
+
 internal_gre:
 - name: int_bgp3to1
   gre_target: 'bgp1.freifunk-westpfalz.de'
@@ -80,6 +117,7 @@ internal_gre:
   v6_local: 2a03:2260:100d:ff01::2/64
   v6_linklocal: fe80::2/64
   v6_remote: 2a03:2260:100d:ff01::1/64
+  type: v4
   ibgp: true
   ospf: true
 - name: int_bgp3to2
@@ -89,6 +127,7 @@ internal_gre:
   v6_local: 2a03:2260:100d:ff03::2/64
   v6_linklocal: fe80::2/64
   v6_remote: 2a03:2260:100d:ff03::1/64
+  type: v4
   ibgp: true
   ospf: true
 - name: int_bgp3to4
@@ -98,5 +137,16 @@ internal_gre:
   v6_local: 2a03:2260:100d:ff05::1/64
   v6_linklocal: fe80::1/64
   v6_remote: 2a03:2260:100d:ff05::2/64
+  type: v4
   ibgp: true
+  ospf: true
+- name: int_bgp3togw03
+  gre_target: 'gw03.freifunk-westpfalz.de'
+  v4_local: 10.198.193.16/31
+  v4_remote: 10.198.193.17/31
+  v6_local: 2a03:2260:100d:ff08::1/64
+  v6_linklocal: fe80::1/64
+  v6_remote: 2a03:2260:100d:ff08::2/64
+  type: v4
+  ibgp: false
   ospf: true

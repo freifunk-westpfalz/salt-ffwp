@@ -1,22 +1,16 @@
 #!yaml|gpg
 hostname: gw01
 fqdn: gw01.freifunk-westpfalz.de
-backports_kernel: true
-ssh_port: 42228
+backports_kernel: false
+ssh_port: 22
 git_name: gw01
 
 network:
   uplink_ifs:
-    - ens3
+    - ens18
   br_ffwp:
     v4_network: 10.198.8.1/16
     v6_suffix: cafe::1/64
-  interfaces_direct:
-    - interface: ens12
-      v4_network: 10.198.193.13/31
-      v6_network: 2a03:2260:100d:ff06::2/64
-      v6_linklocal: fe80::2/64
-      ospf: true
   firewall:
     input:
       policy: DROP
@@ -26,6 +20,28 @@ network:
       policy: ACCEPT
     prerouting:
       policy: ACCEPT
+
+internal_gre:
+- name: int_gw01tobgp1
+  gre_target: 'bgp1.freifunk-westpfalz.de'
+  v4_local: 10.198.193.13/31
+  v4_remote: 10.198.193.12/31
+  v6_local: 2a03:2260:100d:ff06::2/64
+  v6_linklocal: fe80::2/64
+  v6_remote: 2a03:2260:100d:ff06::1/64
+  type: v4
+  ibgp: false
+  ospf: true
+
+gretap:
+  output_if: ens18
+  tunnel:
+    - name: gw01togw02
+      target: 'gw02.freifunk-westpfalz.de'
+    - name: gw01togw03
+      target: 'gw03.freifunk-westpfalz.de'
+    - name: gw01togw04
+      target: 'gw04.freifunk-westpfalz.de'
 
 batman:
   gateway: true

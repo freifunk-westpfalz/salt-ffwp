@@ -29,8 +29,19 @@ internal_gre:
   v6_local: 2a03:2260:100d:ff07::2/64
   v6_linklocal: fe80::2/64
   v6_remote: 2a03:2260:100d:ff07::1/64
+  type: v4
   ibgp: false
   ospf: true
+
+gretap:
+  output_if: ens18
+  tunnel:
+    - name: gw02togw01
+      target: 'gw01.freifunk-westpfalz.de'
+    - name: gw02togw03
+      target: 'gw03.freifunk-westpfalz.de'
+    - name: gw02togw04
+      target: 'gw04.freifunk-westpfalz.de'
 
 batman:
   gateway: true
