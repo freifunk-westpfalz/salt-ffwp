@@ -4,7 +4,7 @@ include:
 install influxdb:
   pkg.installed:
     - sources:
-      - influxdb:  https://dl.influxdata.com/influxdb/releases/influxdb_1.5.1_amd64.deb
+      - influxdb: https://dl.influxdata.com/influxdb/releases/influxdb_1.5.2_amd64.deb
     - allow_updates: true
 
 place /etc/ferm.d/influxdb.conf:
