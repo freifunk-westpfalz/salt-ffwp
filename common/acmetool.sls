@@ -4,7 +4,7 @@ include:
 install acmetool:
   pkg.installed:
     - sources:
-      - acmetool: https://launchpad.net/~hlandau/+archive/ubuntu/rhea/+files/acmetool_0.0.59-1xenial1_amd64.deb
+      - acmetool: https://launchpad.net/~hlandau/+archive/ubuntu/rhea/+files/acmetool_0.0.67-1xenial1_amd64.deb
     - allow_updates: true
 
 place acmetool.conf:
