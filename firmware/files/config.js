@@ -24,6 +24,8 @@ var config = {
  },
  // path to preview pictures directory
  preview_pictures: 'pictures/',
+// experimental branches (show a warning for these branches)
+experimental_branches: ['nightly'],
  // link to changelog
  changelog: 'https://github.com/freifunk-westpfalz/site-ffwp/blob/master/README.md'
 };
