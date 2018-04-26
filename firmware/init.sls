@@ -1,3 +1,5 @@
+# Bei Umzug: rsync -rzEdhP --copy-links /srv/firmware/* root@neurserver:/srv/firmware/
+
 {% if salt['file.directory_exists']('/home/freifunk/gluon') == False %}
 inital clone gluon:
   git.latest:
@@ -47,7 +49,6 @@ install gluon dependencies:
 install ecdsautils:
   pkg.latest:
     - name: ecdsautils
-    - fromrepo: jessie-backports
 
 create log directory:
   file.directory:
@@ -87,3 +88,25 @@ copy firmware autobuilder public key:
     - group: freifunk
     - mode: 660
     - contents_pillar: firmware:public_key
+
+#TODO: Symlinks nach einem Build
+symlink nightly:
+  file.symlink:
+    - name: /srv/firmware/nightly
+    - target: /home/freifunk/gluon/output/images
+    - makedirs: True
+symlink .nightly:
+  file.symlink:
+    - name: /srv/firmware/.nightly
+    - target: /home/freifunk/gluon/output/images
+    - makedirs: True
+
+symlink .build.txt:
+  file.symlink:
+    - name: /srv/firmware/.build.txt
+    - target: /home/freifunk/.ffwp/fw/log/build.log
+
+symlink .nightly_build.txt:
+  file.symlink:
+    - name: /srv/firmware/.nightly_build.txt
+    - target: /home/freifunk/.ffwp/fw/log/nightly_build.log

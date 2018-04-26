@@ -42,7 +42,7 @@ generate cache dirs:
       - service: nginx-reverse-service
 
 
-{% for config in ['api','firmware','map','seafile','zammand','stats','tiles'] %}
+{% for config in ['api','map','seafile','zammand','stats','tiles'] %}
 place nginx {{ config }} reverse config:
   file.managed:
     - name: /etc/nginx/sites-enabled/{{ config }}.conf

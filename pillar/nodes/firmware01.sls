@@ -2,7 +2,7 @@
 hostname: firmware01
 fqdn: firmware01.freifunk-westpfalz.de
 backports_kernel: false
-ssh_port: 22151
+ssh_port: 22
 git_name: firmware01
 
 network:
