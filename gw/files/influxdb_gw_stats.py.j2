@@ -11,7 +11,7 @@ import datetime
 
 host = "{{ pillar['hostname'] }}"
 
-influxdb_client = InfluxDBClient(host='host04-map.freifunk-westpfalz.de', port=8086, username='telegraf', password='{{ pillar['influxdbuser.telegraf.password'] }}', database='ffwp_telegraf')
+influxdb_client = InfluxDBClient(host='stats.freifunk-westpfalz.de', port=8086, username='telegraf', password='{{ pillar['influxdbuser.telegraf.password'] }}', database='ffwp_telegraf')
 
 leases = IscDhcpLeases('/var/lib/dhcp/dhcpd.leases')
 active_leases = leases.get_current()
