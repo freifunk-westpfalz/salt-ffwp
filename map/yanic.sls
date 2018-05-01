@@ -17,7 +17,7 @@ create /var/lib/yanic:
 
 install yanic:
   cmd.run:
-    - name: /usr/local/go/bin/go get -v -u github.com/FreifunkBremen/yanic/cmd/...
+    - name: /usr/local/go/bin/go get -v -u github.com/FreifunkBremen/yanic
     - creates: /opt/go/bin/yanic
     - env:
       - GOPATH: /opt/go

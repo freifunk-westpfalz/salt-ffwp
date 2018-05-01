@@ -72,10 +72,10 @@ offline_after = "10m"
 enable   = true
 path = "/var/freifunk/yanic/data/meshviewer.json"
 
-#[nodes.output.meshviewer-ffrgb.filter]
-#no_owner = false
+[nodes.output.meshviewer-ffrgb.filter]
+no_owner = true
 #blacklist = ["00112233445566", "1337f0badead"]
-#sites = ["ffwp"]
+sites = ["ffwp"]
 #has_location = true
 
 #[nodes.output.meshviewer-ffrgb.filter.in_area]
