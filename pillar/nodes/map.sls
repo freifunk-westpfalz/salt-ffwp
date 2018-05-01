@@ -2,7 +2,7 @@
 hostname: map
 fqdn: map.freifunk-westpfalz.de
 backports_kernel: true
-ssh_port: 22153
+ssh_port: 22
 git_name: map
 
 network:
