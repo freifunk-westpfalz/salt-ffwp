@@ -1,7 +1,7 @@
 install grafana:
   pkg.installed:
     - sources:
-      - grafana: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.0.4_amd64.deb
+      - grafana: https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_5.1.0_amd64.deb
     - allow_updates: true
 
 grafana config:
