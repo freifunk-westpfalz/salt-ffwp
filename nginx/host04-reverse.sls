@@ -29,20 +29,7 @@ nginx-reverse-service:
     - name: nginx
     - enable: True
 
-generate cache dirs:
-  file.directory:
-    - user: www-data
-    - group: www-data
-    - makedirs: true
-    - names:
-      - /var/tmp/nginx/tiles/osm
-      - /var/tmp/nginx/map
-      - /var/tmp/nginx/stats
-    - watch_in:
-      - service: nginx-reverse-service
-
-
-{% for config in ['api','map','seafile','zammand','stats','tiles'] %}
+{% for config in ['seafile','zammand'] %}
 place nginx {{ config }} reverse config:
   file.managed:
     - name: /etc/nginx/sites-enabled/{{ config }}.conf
