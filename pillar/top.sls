@@ -7,8 +7,6 @@ base:
     - nodes.map
   'salt.freifunk-westpfalz.de':
     - nodes.salt
-  'web00.freifunk-westpfalz.de':
-    - nodes.web00
   'gw01.freifunk-westpfalz.de':
     - nodes.gw01
   'gw02.freifunk-westpfalz.de':

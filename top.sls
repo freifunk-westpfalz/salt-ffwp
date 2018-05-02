@@ -30,5 +30,3 @@ base:
     - nginx.map
     - map
     - ntpd
-  'web00.freifunk-westpfalz.de':
-    - nginx.host04-reverse
