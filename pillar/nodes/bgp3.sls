@@ -23,7 +23,7 @@ network:
     - int_bgp3togw03
   firewall:
     input:
-      policy: DROP
+      policy: ACCEPT
     output:
       policy: ACCEPT
     forward:

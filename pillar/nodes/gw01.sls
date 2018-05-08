@@ -13,7 +13,7 @@ network:
     v6_suffix: cafe::1/64
   firewall:
     input:
-      policy: DROP
+      policy: ACCEPT
     output:
       policy: ACCEPT
     forward:
