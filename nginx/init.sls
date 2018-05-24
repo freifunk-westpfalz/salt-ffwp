@@ -49,6 +49,12 @@ openssl dhparam -out /etc/nginx/dh4096.pem 4096 && chmod 660 /etc/nginx/dh4096.p
       - service: restart nginx
 {% endfor %}
 
+/etc/nginx/nginx.conf:
+  file.managed:
+    - source: salt://nginx/files/nginx.conf.j2
+    - watch_in:
+      - service: restart nginx
+
 restart nginx:
   service.running:
     - name: nginx
