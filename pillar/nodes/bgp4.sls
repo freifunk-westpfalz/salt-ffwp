@@ -34,7 +34,7 @@ network:
 #GRE-Einstellungen zum Freifunk Rheinland
 #+1 auf Rheinland IP = unsere IP
 ffrl_gre:
-  local_v4: 185.215.214.137
+  local_v4: 185.133.208.204
   exit_v4: 185.66.195.19/32
   default_v4_bgp_local_pref: 200
   default_v6_bgp_local_pref: 300
@@ -79,15 +79,21 @@ ffrl_gre:
 #GRE-Einstellungen zu Freifunk Nordwest
 #+1 auf Nordwest IP = unsere IP
 ffnw_gre:
-  local_v4: 185.215.214.137
+  local_v4: 185.133.208.204
   exit_v4: 185.197.132.131/32
   default_v4_bgp_local_pref: 300
   default_v6_bgp_local_pref: 200
   tunnel:
-    - name: fra
+    - name: fra_a
       gre_target: 185.197.132.3
       v4_local: 100.100.32.33/31 
       v4_remote: 100.100.32.32/31 
+      v6_local: fe80::2/64
+      v6_remote: fe80::1/64
+    - name: fra_b
+      gre_target: 185.197.132.4
+      v4_local: 100.100.48.33/31 
+      v4_remote: 100.100.48.32/31 
       v6_local: fe80::2/64
       v6_remote: fe80::1/64
     - name: ber

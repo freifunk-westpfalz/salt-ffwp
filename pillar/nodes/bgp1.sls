@@ -90,10 +90,16 @@ ffnw_gre:
       v4_remote: 100.100.96.34/31 
       v6_local: fe80::2/64
       v6_remote: fe80::1/64
-    - name: fra
+    - name: fra_a
       gre_target: 185.197.132.3
       v4_local: 100.100.32.35/31 
       v4_remote: 100.100.32.34/31 
+      v6_local: fe80::2/64
+      v6_remote: fe80::1/64
+    - name: fra_b
+      gre_target: 185.197.132.4
+      v4_local: 100.100.48.35/31 
+      v4_remote: 100.100.48.34/31 
       v6_local: fe80::2/64
       v6_remote: fe80::1/64
     - name: ams_a

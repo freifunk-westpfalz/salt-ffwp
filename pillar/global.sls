@@ -42,17 +42,17 @@ global_host_info:
     internal_v6: 2a03:2260:100d:0200::1
     outgoing_interface_v4: 46.4.148.29
   bgp3.freifunk-westpfalz.de:
-    public_v4: 185.215.214.136
+    public_v4: 185.133.208.203
     public_v6: 2a07:59c6:ee02:201::1
     internal_v4: 10.198.192.33
     internal_v6: 2a03:2260:100d:0300::1
-    outgoing_interface_v4: 185.215.214.136
+    outgoing_interface_v4: 185.133.208.203
   bgp4.freifunk-westpfalz.de:
-    public_v4: 185.215.214.137
+    public_v4: 185.133.208.204
     public_v6: 2a07:59c6:ee02:202::1
     internal_v4: 10.198.192.49
     internal_v6: 2a03:2260:100d:0400::1
-    outgoing_interface_v4: 185.215.214.137
+    outgoing_interface_v4: 185.133.208.204
 
 influxdbuser.telegraf.password: |
   -----BEGIN PGP MESSAGE-----
