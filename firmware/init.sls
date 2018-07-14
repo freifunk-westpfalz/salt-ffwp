@@ -21,7 +21,7 @@ create /srv/gluon-firmware-wizard:
     - group: freifunk
     - makedirs: True
 
-clone FFDA gluon-firmware-wizard:
+clone FFDA gluon-firmware-wizard for ffwp:
   git.latest:
     - user: freifunk
     - name: https://github.com/freifunk-darmstadt/gluon-firmware-wizard
@@ -32,7 +32,27 @@ gluon-firmware-wizard ffwp-config:
     - user: freifunk
     - name: www-data
     - name: /srv/gluon-firmware-wizard/config.js
-    - source: salt://firmware/files/config.js
+    - source: salt://firmware/files/config_ffwp.js
+
+create /srv/gluon-firmware-wizard_ffka:
+  file.directory:
+    - name: /srv/gluon-firmware-wizard_ffka
+    - user: freifunk
+    - group: freifunk
+    - makedirs: True
+
+clone FFDA gluon-firmware-wizard for ffka:
+  git.latest:
+    - user: freifunk
+    - name: https://github.com/freifunk-darmstadt/gluon-firmware-wizard
+    - target: /srv/gluon-firmware-wizard_ffka
+
+gluon-firmware-wizard ffka-config:
+  file.managed:
+    - user: freifunk
+    - name: www-data
+    - name: /srv/gluon-firmware-wizard_ffka/config.js
+    - source: salt://firmware/files/config_ffka.js
 
 install gluon dependencies:
   pkg.latest:
@@ -110,3 +130,8 @@ symlink .nightly_build.txt:
   file.symlink:
     - name: /srv/firmware/.nightly_build.txt
     - target: /home/freifunk/.ffwp/fw/log/nightly_build.log
+
+create /srv/firmware_ffka:
+  file.directory:
+    - name: /srv/firmware_ffka
+    - makedirs: True

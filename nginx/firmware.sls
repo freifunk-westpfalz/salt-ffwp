@@ -12,7 +12,7 @@ acme config:
 
 request LE certs for firmware domains:
   cmd.run:
-    - name: acmetool quickstart --batch && acmetool --batch want download.freifunk-westpfalz.de updates.freifunk-westpfalz.de
+    - name: acmetool quickstart --batch && acmetool --batch want download.freifunk-westpfalz.de updates.freifunk-westpfalz.de download.premium.freifunk-westpfalz.de
 
 {% endif %}
 
@@ -30,8 +30,14 @@ nginx-firmware-service:
     - enable: True
     - watch:
         - file: place nginx firmware config
+        - file: place nginx firmware ffka config
 
-place nginx firmware config:
+place nginx firmware ffwp config:
   file.managed:
-    - name: /etc/nginx/sites-enabled/firmware.conf
-    - source: salt://nginx/files/hosts/firmware/firmware.conf
+    - name: /etc/nginx/sites-enabled/firmware_ffwp.conf
+    - source: salt://nginx/files/hosts/firmware/firmware_ffwp.conf
+    
+place nginx firmware ffka config:
+  file.managed:
+    - name: /etc/nginx/sites-enabled/firmware_ffka.conf
+    - source: salt://nginx/files/hosts/firmware/firmware_ffka.conf
