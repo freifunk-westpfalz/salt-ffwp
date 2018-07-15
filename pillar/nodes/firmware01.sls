@@ -65,3 +65,8 @@ firmware:
     ZLrJ1UMMxkqu+KIzhknmZaH/Twz0dZTUd7lEaG0=
     =b2dm
     -----END PGP MESSAGE-----
+
+allowed_migrate_nodes:
+ - fdc6:c4fe:1de4::c6e9:84ff:fe33:4ff4 #KL-warmfreibad1
+ - fdc6:c4fe:1de4::c6e9:84ff:fe33:42f8 #KL-warmfreibad2
+ - fdc6:c4fe:1de4::ee08:6bff:fe61:8c64 #Chaos-inKL

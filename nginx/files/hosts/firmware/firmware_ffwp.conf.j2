@@ -1,3 +1,11 @@
+geo $new_firmware {
+    default 0;
+    {%for node in pillar['allowed_migrate_nodes']-%}
+    {{node}}/128 1;
+    {% endfor -%}
+    
+}
+
 server {
     listen 80;
     listen [::]:80;
@@ -9,6 +17,9 @@ server {
 
     #charset koi8-r;
     #access_log  /var/log/nginx/log/host.access.log  main;
+    if ($new_firmware = 1) {
+	    rewrite ^ http://download.premium.internal.freifunk-westpfalz.de$request_uri permanent;
+    }
 
     location /gluon-firmware-wizard {
       alias   /srv/gluon-firmware-wizard;
