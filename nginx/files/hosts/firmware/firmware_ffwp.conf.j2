@@ -14,7 +14,8 @@ server {
     #Deaktiviert wegen Routern, TODO: optimieren
     #include "snippets/ssl-redirect.conf";
     server_name download.freifunk-westpfalz.de updates.freifunk-westpfalz.de [fdc6:c4fe:1de4::c1] [fdc6:c4fe:1de4:0:beef::1];
-
+    access_log      /var/log/nginx/firmware.access.log;
+    error_log       /var/log/nginx/firmware.error.log;
     #charset koi8-r;
     #access_log  /var/log/nginx/log/host.access.log  main;
     if ($new_firmware = 1) {

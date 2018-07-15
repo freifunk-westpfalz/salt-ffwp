@@ -11,6 +11,8 @@ var config = {
  vendormodels: vendormodels,
  // community prefix of the firmware images
  community_prefix: 'gluon-ffwp-',
+ // set enabled categories of devices (see devices.js)
+ enabled_device_categories: ["recommended", "4_32", "8_32"],
  // firmware version regex
  version_regex: '-([0-9]+.[0-9]+.[0-9]+-[a-zA-Z]+\.[0-9]+-[0-9]+)-',
  // relative image paths and branch

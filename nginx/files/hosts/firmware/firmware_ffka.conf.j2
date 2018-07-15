@@ -8,7 +8,8 @@ server {
     server_name download.premium.freifunk-westpfalz.de download.premium.internal.freifunk-westpfalz.de;
 
     #charset koi8-r;
-    #access_log  /var/log/nginx/log/host.access.log  main;
+    access_log      /var/log/nginx/firmware.access.log;
+    error_log       /var/log/nginx/firmware.error.log;
 
     location /gluon-firmware-wizard {
       alias   /srv/gluon-firmware-wizard_ffka;

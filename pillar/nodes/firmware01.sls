@@ -70,3 +70,14 @@ allowed_migrate_nodes:
  - fdc6:c4fe:1de4::c6e9:84ff:fe33:4ff4 #KL-warmfreibad1
  - fdc6:c4fe:1de4::c6e9:84ff:fe33:42f8 #KL-warmfreibad2
  - fdc6:c4fe:1de4::ee08:6bff:fe61:8c64 #Chaos-inKL
+ - fdc6:c4fe:1de4::c66e:1fff:fe2b:8c08 #Migration1
+ - fdc6:c4fe:1de4::c6e9:84ff:fed2:c82c #Migration2
+ - fdc6:c4fe:1de4::c6e9:84ff:fed2:c6bd #Migration3
+ - fdc6:c4fe:1de4::f6f2:6dff:fe44:bd17 #Migration4
+ - fdc6:c4fe:1de4::c6e9:84ff:fed2:bc07 #Migration5
+ - fdc6:c4fe:1de4::f6f2:6dff:fe44:be28 #Migration6
+ - fdc6:c4fe:1de4::eade:27ff:fefd:e88 #KL-Freibeuter-4
+ - fdc6:c4fe:1de4::c66e:1fff:fee8:4fa6 #wp-Otterberg-Geissbergring (ich weiß wo er in KL steht)
+ - fdc6:c4fe:1de4::32b5:c2ff:feda:1c88 #KL-Stadtteilbuero
+ - fdc6:c4fe:1de4::32b5:c2ff:fed9:a3f8 #KL-Copacabana
+ - fdc6:c4fe:1de4::32b5:c2ff:fe3e:85da #KL-Gerds-Comicladen
