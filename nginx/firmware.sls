@@ -28,6 +28,7 @@ nginx-firmware-service:
   service.running:
     - name: nginx
     - enable: True
+    - reload: True
     - watch:
         - file: place nginx firmware ffwp config
         - file: place nginx firmware ffka config
