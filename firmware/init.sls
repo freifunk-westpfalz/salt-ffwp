@@ -115,6 +115,7 @@ symlink nightly:
     - name: /srv/firmware/nightly
     - target: /home/freifunk/gluon/output/images
     - makedirs: True
+
 symlink .nightly:
   file.symlink:
     - name: /srv/firmware/.nightly
@@ -134,4 +135,10 @@ symlink .nightly_build.txt:
 create /srv/firmware_ffka:
   file.directory:
     - name: /srv/firmware_ffka
+    - makedirs: True
+
+symlink ffka .nightly:
+  file.symlink:
+    - name: /srv/firmware_ffka/.nightly
+    - target: srv/firmware_ffka/nightly
     - makedirs: True
