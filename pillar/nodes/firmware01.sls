@@ -70,12 +70,12 @@ allowed_migrate_nodes:
  - fdc6:c4fe:1de4::c6e9:84ff:fe33:4ff4 #KL-warmfreibad1
  - fdc6:c4fe:1de4::c6e9:84ff:fe33:42f8 #KL-warmfreibad2
  - fdc6:c4fe:1de4::ee08:6bff:fe61:8c64 #Chaos-inKL
- - fdc6:c4fe:1de4::c66e:1fff:fe2b:8c08 #Migration1
- - fdc6:c4fe:1de4::c6e9:84ff:fed2:c82c #Migration2
- - fdc6:c4fe:1de4::c6e9:84ff:fed2:c6bd #Migration3
- - fdc6:c4fe:1de4::f6f2:6dff:fe44:bd17 #Migration4
+ #- fdc6:c4fe:1de4::c66e:1fff:fe2b:8c08 #Migration1
+ #- fdc6:c4fe:1de4::c6e9:84ff:fed2:c82c #Migration2
+ #- fdc6:c4fe:1de4::c6e9:84ff:fed2:c6bd #Migration3
+ #- fdc6:c4fe:1de4::f6f2:6dff:fe44:bd17 #Migration4
  - fdc6:c4fe:1de4::c6e9:84ff:fed2:bc07 #Migration5
- - fdc6:c4fe:1de4::f6f2:6dff:fe44:be28 #Migration6
+ #- fdc6:c4fe:1de4::f6f2:6dff:fe44:be28 #Migration6
  - fdc6:c4fe:1de4::eade:27ff:fefd:e88 #KL-Freibeuter-4
  - fdc6:c4fe:1de4::c66e:1fff:fee8:4fa6 #wp-Otterberg-Geissbergring
  - fdc6:c4fe:1de4::32b5:c2ff:feda:1c88 #KL-Stadtteilbuero
@@ -433,3 +433,22 @@ allowed_migrate_nodes:
  - fdc6:c4fe:1de4::12fe:edff:feb7:4c46 #ulmet 4 dann 5 dann 1
  - fdc6:c4fe:1de4::6666:b3ff:fe42:bb62 #Ben-mobil
  - fdc6:c4fe:1de4::219:99ff:fe67:8cc4 #KL-TKL-Futro_2
+ - fdc6:c4fe:1de4::c24a:ff:febe:78fc #KUS-Ulmet-5
+ - fdc6:c4fe:1de4::6670:2ff:fe3d:7e32 #KUS-Ulmet-1
+ - fdc6:c4fe:1de4::eade:27ff:fefc:fafe #kib-ads-02
+ - fdc6:c4fe:1de4::62e3:27ff:fe5a:508 #Ev-Gemeindesaal_Katzweiler
+ - fdc6:c4fe:1de4::62e3:27ff:fe60:d5e #KIB-AGwG-Edeka-02
+ - fdc6:c4fe:1de4::c66e:1fff:fe31:6170 #Warpspace-Otterberg
+ - fdc6:c4fe:1de4::eade:27ff:fec0:2a3a #KIB-Dr.Mayr
+ - fdc6:c4fe:1de4::62e3:27ff:fe59:fb6c #kib-emmel-fachmarkt
+ - fdc6:c4fe:1de4::62e3:27ff:feb7:e3e4 #Weingut-Buhrmann-Becher
+ - fdc6:c4fe:1de4::12fe:edff:feaf:774a #wp-weilerbacher_01-de
+ - fdc6:c4fe:1de4::62e3:27ff:fec7:52ea #KL-TKL-CM
+ - fdc6:c4fe:1de4::16cc:20ff:feb3:1f8c #kib-weingut-roos2 danach wp-weingutroos-ilbesheim
+ - fdc6:c4fe:1de4::e695:6eff:fe43:8430 #BIR-Leitzweiler-02
+ - fdc6:c4fe:1de4::d66e:eff:fe32:50de #BIR-Leitzweiler-DGH-Aussen danach 01
+ - fdc6:c4fe:1de4::9ade:d0ff:fe88:712e #KIB-VG-Marktplatz
+ - fdc6:c4fe:1de4::1aa6:f7ff:feca:8972 #KIB-VG-Marktplatz2
+ - fdc6:c4fe:1de4::32b5:c2ff:fec2:aa5c #DerBunteHund-Otterberg
+ - fdc6:c4fe:1de4::c66e:1fff:fefe:3f74 #KUS-FBG-Uplink
+ - fdc6:c4fe:1de4::16cc:20ff:fec8:fe8 #KIB-DONNERSBERGER-01
