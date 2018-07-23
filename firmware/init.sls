@@ -83,7 +83,7 @@ add crontab gluon:
     - identifier: nightly_build_cron
     - user: freifunk
     - hour: 22
-    - minute: 30
+    - minute: 00
     - name:  (cd /home/freifunk/gluon/site && /home/freifunk/gluon/site/start-build.sh > /home/freifunk/.ffwp/fw/log/nightly_build.log 2>&1)
 {% else %}
 remove crontab gluon:
