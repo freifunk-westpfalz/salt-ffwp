@@ -4,7 +4,7 @@
 inital clone gluon:
   git.latest:
     - user: freifunk
-    - name: https://github.com/freifunk-gluon/gluon.git
+    - name: https://github.com/freifunk-westpfalz/gluon.git
     - target: /home/freifunk/gluon
 {% endif %}
 
