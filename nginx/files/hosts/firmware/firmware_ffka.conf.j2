@@ -5,7 +5,7 @@ server {
     include snippets/acmetool.conf;
     #Deaktiviert wegen Routern, TODO: optimieren
     #include "snippets/ssl-redirect.conf";
-    server_name download.premium.freifunk-westpfalz.de download.premium.internal.freifunk-westpfalz.de;
+    server_name download.premium.freifunk-westpfalz.de download.premium.internal.freifunk-westpfalz.de download.fallback.freifunk-westpfalz.de;
 
     #charset koi8-r;
     access_log      /var/log/nginx/firmware.access.log;
