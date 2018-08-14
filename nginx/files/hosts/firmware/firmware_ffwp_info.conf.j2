@@ -1,0 +1,27 @@
+server {
+    listen	 80;
+    listen       [::]:80;
+    server_name  ffwp.info;
+    include snippets/acmetool.conf;
+	  location / {
+      rewrite ^ https://www.freifunk-westpfalz.de/2018/07/ffwp-info-besuchen-migrationshinweise/ permanent;
+    }
+}
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    ssl_certificate /var/lib/acme/live/download.freifunk-westpfalz.de/fullchain;
+    ssl_certificate_key /var/lib/acme/live/download.freifunk-westpfalz.de/privkey;
+    include snippets/ssl.conf;
+    include "snippets/gzip.conf";
+
+
+    server_name ffwp.info;
+
+    #access_log      /var/log/nginx/ffwp_info.access.log;
+    #error_log       /var/log/nginx/ffwp_info.error.log;
+    location / {
+      rewrite ^ https://www.freifunk-westpfalz.de/2018/07/ffwp-info-besuchen-migrationshinweise/ permanent;
+    }
+
+}
