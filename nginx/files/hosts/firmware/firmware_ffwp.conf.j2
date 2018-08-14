@@ -1,7 +1,7 @@
 geo $new_firmware {
-    default 0;
-    {%for node in pillar['allowed_migrate_nodes']-%}
-    {{node}}/128 1;
+    default 1;
+    {%for node in pillar['disallowed_migrate_nodes']-%}
+    {{node}}/128 0;
     {% endfor -%}
     
 }
