@@ -24,6 +24,14 @@ var config = {
    '../nightly/factory/': 'nightly',
    '../nightly/sysupgrade/': 'nightly'
  },
+ // branch descriptions shown during selection
+ branch_descriptions: {
+  stable: 'Gut getestet, zuverlässig und stabil.',
+  beta: 'Vorabtests neuer Stable-Kandidaten.',
+  experimental: 'Ungetestet, automatisch generiert.'
+},
+// recommended branch will be marked during selection
+recommended_branch: 'stable',
  // path to preview pictures directory
  preview_pictures: 'pictures/',
 // experimental branches (show a warning for these branches)
