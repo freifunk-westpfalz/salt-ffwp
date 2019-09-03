@@ -37,5 +37,5 @@ recommended_branch: 'stable',
 // experimental branches (show a warning for these branches)
 experimental_branches: ['nightly'],
  // link to changelog
- changelog: 'https://github.com/freifunk-westpfalz/site-ffwp/blob/master/README.md'
+ changelog: 'https://gitlab.karlsruhe.freifunk.net/firmware/site/commits/ffwp_multidomain'
 };
