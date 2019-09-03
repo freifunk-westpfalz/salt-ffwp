@@ -30,7 +30,7 @@ var config = {
     '../beta/sysupgrade/': 'beta',
     '../beta/other/': 'beta',
     '../nightly/factory/': 'nightly',
-    '../nightly/sysupgrade/': 'nightly'
+    '../nightly/sysupgrade/': 'nightly',
     '../nightly/other/': 'nightly'
   },
   // page title
