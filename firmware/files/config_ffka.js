@@ -25,10 +25,13 @@ var config = {
   directories: {
     '../stable/factory/': 'stable',
     '../stable/sysupgrade/': 'stable',
+    '../stable/other/': 'stable',
     '../beta/factory/': 'beta',
     '../beta/sysupgrade/': 'beta',
+    '../beta/other/': 'beta',
     '../nightly/factory/': 'nightly',
     '../nightly/sysupgrade/': 'nightly'
+    '../nightly/other/': 'nightly'
   },
   // page title
   title: 'Firmware FFWP',
