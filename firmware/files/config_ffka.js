@@ -48,5 +48,5 @@ var config = {
   // experimental branches (show a warning for these branches)
   experimental_branches: ['nightly'],
   // link to changelog
-  changelog: 'https://gitlab.karlsruhe.freifunk.net/firmware/site/commits/ffwp_multidomain'
+  changelog: 'https://gitlab.karlsruhe.freifunk.net/ffwp/firmware/site/commits/ffwp_multidomain'
 };
