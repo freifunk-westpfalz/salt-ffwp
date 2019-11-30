@@ -16,7 +16,7 @@ var config = {
   // Display a checkbox that allows to display not recommended devices.
   // This only make sense if enabled_device_categories also contains not
   // recommended devices.
-  recommended_toggle: false, 
+  recommended_toggle: true, 
   // Optional link to an info page about no longer recommended devices
   recommended_info_link: null,
   // firmware version regex
