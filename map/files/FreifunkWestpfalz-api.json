@@ -1,5 +1,5 @@
 {
-    "api": "0.4.13",
+    "api": "0.4.14",
     "contact": {
         "email": "info@freifunk-westpfalz.de",
         "facebook": "https://www.facebook.com/FreifunkWestpfalz",
@@ -39,7 +39,7 @@
             "interval": "1min",
             "mapType": "list/status",
             "technicalType": "ffmap",
-            "url": "https://map.freifunk-westpfalz.de/data/nodes.json"
+            "url": "https://api.karlsruhe.freifunk.net/yanic/meshviewer/ffwp/nodes.json"
         }
     ],
     "state": {
@@ -63,7 +63,7 @@
     "techDetails": {
         "firmware": {
             "name": "Gluon",
-            "url": "http://download.freifunk-westpfalz.de/"
+            "url": "https://download.premium.freifunk-westpfalz.de/"
         },
         "legals": [
             "vpnnational",
@@ -77,7 +77,7 @@
             ],
             "ipv6": [
                 {
-                    "network": "fdc6:c4fe:1de4::/48"
+                    "network": "2001:678:6e3::/45"
                 }
             ]
         },
