@@ -4,18 +4,18 @@ module.exports = function () {
     'nodeInfos': [
       {
         'name': 'Clientstatistik',
-        'href': 'https://monitor.frickelfunk.net/grafana/d/000000004/nodes-single?refresh=1m&orgId=1&var-knoten={NODE_NAME}',
-        'image': 'https://api.frickelfunk.net/grafana/render/d-solo/F9kwlPciz/nodes-meshviewer?refresh=1m&orgId=1&var-node={NODE_ID}&var-saveinterval=60&panelId=1&width=650&height=350&theme=light&from=now-1d',
+        'href': 'https://stats.freifunk-westpfalz.de/d/IKf3QCaWk/node_id?orgId=1&var-nodeid={NODE_ID}',
+        'image': 'https://stats.freifunk-westpfalz.de/render/d-solo/IKf3QCaWk/node_id?refresh=1m&orgId=1&panelId=2&width=650&height=350&theme=light&from=now-1d&var-nodeid={NODE_ID}',
         'title': 'Knoten {NODE_NAME} - weitere Statistiken'
       },
       {
         'name': 'Trafficstatistik',
-        'href': 'https://monitor.frickelfunk.net/grafana/d/000000004/nodes-single?refresh=1m&orgId=1&var-knoten={NODE_NAME}',
-        'image': 'https://api.frickelfunk.net/grafana/render/d-solo/F9kwlPciz/nodes-meshviewer?refresh=1m&orgId=1&var-node={NODE_ID}&var-saveinterval=60&panelId=2&width=650&height=350&theme=light&from=now-1d',
+        'href': 'https://stats.freifunk-westpfalz.de/d/IKf3QCaWk/node_id?orgId=1&var-nodeid={NODE_ID}',
+        'image': 'https://stats.freifunk-westpfalz.de/render/d-solo/IKf3QCaWk/node_id?refresh=1m&orgId=1&panelId=3&width=650&height=350&theme=light&from=now-1d&var-nodeid={NODE_ID}',
         'title': 'Knoten {NODE_NAME} - weitere Statistiken'
       }
     ],
-    'globalInfos_deactivated': [
+    'globalInfos': [
       {
         'name': 'Statistik',
         'href': 'https://stats.freifunk-westpfalz.de/dashboard/db/freifunk-ffwp-global?orgId=1',
